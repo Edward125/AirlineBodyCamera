@@ -7,3 +7,4 @@ E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\bin\Debug\AirlineBodyCamera.p
 E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\obj\Debug\AirlineBodyCamera.exe
 E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\obj\Debug\AirlineBodyCamera.pdb
 E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\bin\Debug\eu.png
+E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\obj\Debug\AirlineBodyCamera.csprojResolveAssemblyReference.cache
