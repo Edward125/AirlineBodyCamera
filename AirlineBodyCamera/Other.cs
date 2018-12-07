@@ -13,42 +13,7 @@ namespace Edward
     /// </summary>
    public static class Other
     {
-        #region checkTime
 
-        /// <summary>
-        /// check time
-        /// </summary>
-        /// <param name="str">encrpt date</param>
-        /// <returns></returns>
-        public static bool checkTime(string str)
-        {
-            DateTime t = Convert.ToDateTime(DES.DesDecrypt(str, "Edward86"));
-
-            string fileFlag = @"C:\Users\" + @Environment.UserName + @"\AppData\Local\" + System.Windows.Forms.Application.ProductName + ".dll";
-
-            if (File.Exists(fileFlag))
-            {
-                return false;
-            }
-
-            FileInfo[] files = new DirectoryInfo("C:\\").GetFiles();
-            int index = 0;
-            while (index < files.Length)
-            {
-                if (DateTime.Compare(files[index].LastAccessTime, t) > 0)
-                {
-                    FileStream iniStram = File.Create(fileFlag);
-                    iniStram.Close();
-
-                    FileInfo fi = new FileInfo(fileFlag);
-                    fi.Attributes = FileAttributes.Hidden;
-                }
-                checked { ++index; }
-            }
-            return true;
-
-        }
-        #endregion
 
         #region pingIP
         /// <summary>

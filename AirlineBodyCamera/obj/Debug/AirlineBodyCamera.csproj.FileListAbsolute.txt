@@ -1,0 +1,9 @@
+E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\obj\Debug\AirlineBodyCamera.frmMain.resources
+E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\obj\Debug\AirlineBodyCamera.Properties.Resources.resources
+E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\obj\Debug\Edward.SplashForm.resources
+E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\obj\Debug\AirlineBodyCamera.csproj.GenerateResource.Cache
+E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\bin\Debug\AirlineBodyCamera.exe
+E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\bin\Debug\AirlineBodyCamera.pdb
+E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\obj\Debug\AirlineBodyCamera.exe
+E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\obj\Debug\AirlineBodyCamera.pdb
+E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\bin\Debug\eu.png

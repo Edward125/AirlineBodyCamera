@@ -6,13 +6,13 @@ using System.Runtime.InteropServices;
 
 
 
-namespace System.Runtime.CompilerServices
-{
-    /// <summary>
-    /// 缺少编译器要求的成员“ystem.Runtime.CompilerServices.ExtensionAttribute..ctor”
-    /// </summary>
-    public class ExtensionAttribute : Attribute { }
-}
+//namespace System.Runtime.CompilerServices
+//{
+//    /// <summary>
+//    /// 缺少编译器要求的成员“ystem.Runtime.CompilerServices.ExtensionAttribute..ctor”
+//    /// </summary>
+//    public class ExtensionAttribute : Attribute { }
+//}
 
 namespace Edward
 {
