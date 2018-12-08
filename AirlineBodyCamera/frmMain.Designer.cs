@@ -110,7 +110,7 @@
             this.label1.Size = new System.Drawing.Size(459, 62);
             this.label1.TabIndex = 1;
             this.label1.Text = "执勤记录仪管理软件";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+
             // 
             // grbChangePassword
             // 

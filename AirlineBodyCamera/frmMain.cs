@@ -213,9 +213,7 @@ namespace AirlineBodyCamera
                                 {
 
                                     updateMessage(lstInfo, "U盘已插入，盘符为:" + drive.Name.ToString());
-                                    this.btnEjectSD.Enabled = true;
-                                    this.btnOpenFile.Enabled = true;
-                                    this.btnUpdataFile.Enabled = true;
+          
                                    /// Thread.Sleep(1000);
                                     DestinFolder = drive.Name.ToString();
      
@@ -666,6 +664,10 @@ namespace AirlineBodyCamera
                 btnReadDeviceInfo.Enabled = false;
                 this.btn_SyncDevTime.Enabled = false;
                 this.btn_SetMSDC.Enabled = false;
+                Delay(500);
+                this.btnEjectSD.Enabled = true;
+                this.btnOpenFile.Enabled = true;
+                this.btnUpdataFile.Enabled = true;
                 txtFilePath.Enabled = true;
                 updateMessage(lstInfo, "执法仪已进入U盘模式.");
 
@@ -905,6 +907,7 @@ namespace AirlineBodyCamera
             this.txtDevID.Enabled = false;
             this.pbarUpdate.Enabled = false;
             this.btnUpdataFile.Enabled = false;
+            txtFilePath.Text = string.Empty;
             btn_ChangePWd.Enabled = false;
             LoginDevice = DeviceType.NA;
             txtFilePath.Enabled = false;
@@ -962,9 +965,22 @@ namespace AirlineBodyCamera
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+
+        /// <summary>
+        /// 延時子程序
+        /// </summary>
+        /// <param name="interval">延時的時間，单位毫秒</param>
+        private void Delay(double interval)
         {
+            DateTime time = DateTime.Now;
+            double span = interval * 10000;
+            while (DateTime.Now.Ticks - time.Ticks < span)
+            {
+                Application.DoEvents();
+            }
 
         }
+
+
     }
 }
