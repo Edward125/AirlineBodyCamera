@@ -53,10 +53,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnReadDeviceInfo = new System.Windows.Forms.Button();
-            this.btn_OK = new System.Windows.Forms.Button();
             this.tb_UnitName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.btn_Edit = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.tb_UserName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tb_UnitID = new System.Windows.Forms.TextBox();
@@ -74,9 +73,9 @@
             this.btnRestart = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.comboUserID = new System.Windows.Forms.ComboBox();
-            this.btn_exit = new System.Windows.Forms.Button();
-            this.btn_CheckDev = new System.Windows.Forms.Button();
-            this.btn_Logon = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnCheckDev = new System.Windows.Forms.Button();
+            this.btnLogon = new System.Windows.Forms.Button();
             this.tb_Password = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.gb_StatusCommand = new System.Windows.Forms.GroupBox();
@@ -165,6 +164,7 @@
             this.btnChangePwdOK.TabIndex = 6;
             this.btnChangePwdOK.Text = "确认修改";
             this.btnChangePwdOK.UseVisualStyleBackColor = true;
+            this.btnChangePwdOK.Click += new System.EventHandler(this.btnChangePwdOK_Click);
             // 
             // txtNewPwd2
             // 
@@ -220,10 +220,11 @@
             this.btn_ChangePWd.TabIndex = 4;
             this.btn_ChangePWd.Text = "修改密码";
             this.btn_ChangePWd.UseVisualStyleBackColor = true;
+            this.btn_ChangePWd.Click += new System.EventHandler(this.btn_ChangePWd_Click);
             // 
             // btn_EcjetSD
             // 
-            this.btn_EcjetSD.Location = new System.Drawing.Point(242, 13);
+            this.btn_EcjetSD.Location = new System.Drawing.Point(221, 13);
             this.btn_EcjetSD.Name = "btn_EcjetSD";
             this.btn_EcjetSD.Size = new System.Drawing.Size(61, 30);
             this.btn_EcjetSD.TabIndex = 2;
@@ -238,6 +239,7 @@
             this.btn_SyncDevTime.TabIndex = 0;
             this.btn_SyncDevTime.Text = "时间同步";
             this.btn_SyncDevTime.UseVisualStyleBackColor = true;
+            this.btn_SyncDevTime.Click += new System.EventHandler(this.btn_SyncDevTime_Click);
             // 
             // btn_SetMSDC
             // 
@@ -247,6 +249,7 @@
             this.btn_SetMSDC.TabIndex = 1;
             this.btn_SetMSDC.Text = "U盘使能";
             this.btn_SetMSDC.UseVisualStyleBackColor = true;
+            this.btn_SetMSDC.Click += new System.EventHandler(this.btn_SetMSDC_Click);
             // 
             // groupBox5
             // 
@@ -272,6 +275,7 @@
             this.btn_UpdataFile.TabIndex = 26;
             this.btn_UpdataFile.Text = "升级";
             this.btn_UpdataFile.UseVisualStyleBackColor = true;
+            this.btn_UpdataFile.Click += new System.EventHandler(this.btn_UpdataFile_Click);
             // 
             // pg_Updata
             // 
@@ -288,6 +292,7 @@
             this.btn_FilePathChose.TabIndex = 2;
             this.btn_FilePathChose.Text = "选择";
             this.btn_FilePathChose.UseVisualStyleBackColor = true;
+            this.btn_FilePathChose.Click += new System.EventHandler(this.btn_FilePathChose_Click);
             // 
             // tb_FilePath
             // 
@@ -319,10 +324,9 @@
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.btnReadDeviceInfo);
-            this.groupBox3.Controls.Add(this.btn_OK);
             this.groupBox3.Controls.Add(this.tb_UnitName);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.btn_Edit);
+            this.groupBox3.Controls.Add(this.btnEdit);
             this.groupBox3.Controls.Add(this.tb_UserName);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.tb_UnitID);
@@ -341,21 +345,13 @@
             // btnReadDeviceInfo
             // 
             this.btnReadDeviceInfo.Enabled = false;
-            this.btnReadDeviceInfo.Location = new System.Drawing.Point(313, 73);
+            this.btnReadDeviceInfo.Location = new System.Drawing.Point(315, 60);
             this.btnReadDeviceInfo.Name = "btnReadDeviceInfo";
             this.btnReadDeviceInfo.Size = new System.Drawing.Size(59, 30);
             this.btnReadDeviceInfo.TabIndex = 18;
             this.btnReadDeviceInfo.Text = "读取";
             this.btnReadDeviceInfo.UseVisualStyleBackColor = true;
-            // 
-            // btn_OK
-            // 
-            this.btn_OK.Location = new System.Drawing.Point(313, 41);
-            this.btn_OK.Name = "btn_OK";
-            this.btn_OK.Size = new System.Drawing.Size(61, 30);
-            this.btn_OK.TabIndex = 17;
-            this.btn_OK.Text = "确定";
-            this.btn_OK.UseVisualStyleBackColor = true;
+            this.btnReadDeviceInfo.Click += new System.EventHandler(this.btnReadDeviceInfo_Click);
             // 
             // tb_UnitName
             // 
@@ -375,14 +371,15 @@
             this.label9.TabIndex = 14;
             this.label9.Text = "单位名称";
             // 
-            // btn_Edit
+            // btnEdit
             // 
-            this.btn_Edit.Location = new System.Drawing.Point(313, 10);
-            this.btn_Edit.Name = "btn_Edit";
-            this.btn_Edit.Size = new System.Drawing.Size(61, 30);
-            this.btn_Edit.TabIndex = 16;
-            this.btn_Edit.Text = "编辑";
-            this.btn_Edit.UseVisualStyleBackColor = true;
+            this.btnEdit.Location = new System.Drawing.Point(313, 17);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(61, 30);
+            this.btnEdit.TabIndex = 16;
+            this.btnEdit.Text = "编辑";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // tb_UserName
             // 
@@ -511,9 +508,9 @@
             this.groupBox1.Controls.Add(this.btnRestart);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.comboUserID);
-            this.groupBox1.Controls.Add(this.btn_exit);
-            this.groupBox1.Controls.Add(this.btn_CheckDev);
-            this.groupBox1.Controls.Add(this.btn_Logon);
+            this.groupBox1.Controls.Add(this.btnExit);
+            this.groupBox1.Controls.Add(this.btnCheckDev);
+            this.groupBox1.Controls.Add(this.btnLogon);
             this.groupBox1.Controls.Add(this.tb_Password);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 85);
@@ -556,32 +553,35 @@
             this.comboUserID.Size = new System.Drawing.Size(71, 20);
             this.comboUserID.TabIndex = 25;
             // 
-            // btn_exit
+            // btnExit
             // 
-            this.btn_exit.Location = new System.Drawing.Point(200, 43);
-            this.btn_exit.Name = "btn_exit";
-            this.btn_exit.Size = new System.Drawing.Size(65, 30);
-            this.btn_exit.TabIndex = 6;
-            this.btn_exit.Text = "退出";
-            this.btn_exit.UseVisualStyleBackColor = true;
+            this.btnExit.Location = new System.Drawing.Point(200, 43);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(65, 30);
+            this.btnExit.TabIndex = 6;
+            this.btnExit.Text = "退出";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btn_CheckDev
+            // btnCheckDev
             // 
-            this.btn_CheckDev.Location = new System.Drawing.Point(133, 12);
-            this.btn_CheckDev.Name = "btn_CheckDev";
-            this.btn_CheckDev.Size = new System.Drawing.Size(65, 30);
-            this.btn_CheckDev.TabIndex = 0;
-            this.btn_CheckDev.Text = "检查设备";
-            this.btn_CheckDev.UseVisualStyleBackColor = true;
+            this.btnCheckDev.Location = new System.Drawing.Point(133, 12);
+            this.btnCheckDev.Name = "btnCheckDev";
+            this.btnCheckDev.Size = new System.Drawing.Size(65, 30);
+            this.btnCheckDev.TabIndex = 0;
+            this.btnCheckDev.Text = "检查设备";
+            this.btnCheckDev.UseVisualStyleBackColor = true;
+            this.btnCheckDev.Click += new System.EventHandler(this.btn_CheckDev_Click);
             // 
-            // btn_Logon
+            // btnLogon
             // 
-            this.btn_Logon.Location = new System.Drawing.Point(132, 42);
-            this.btn_Logon.Name = "btn_Logon";
-            this.btn_Logon.Size = new System.Drawing.Size(65, 30);
-            this.btn_Logon.TabIndex = 1;
-            this.btn_Logon.Text = "登录";
-            this.btn_Logon.UseVisualStyleBackColor = true;
+            this.btnLogon.Location = new System.Drawing.Point(132, 42);
+            this.btnLogon.Name = "btnLogon";
+            this.btnLogon.Size = new System.Drawing.Size(65, 30);
+            this.btnLogon.TabIndex = 1;
+            this.btnLogon.Text = "登录";
+            this.btnLogon.UseVisualStyleBackColor = true;
+            this.btnLogon.Click += new System.EventHandler(this.btn_Logon_Click);
             // 
             // tb_Password
             // 
@@ -641,6 +641,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMain";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grbChangePassword.ResumeLayout(false);
             this.grbChangePassword.PerformLayout();
@@ -685,10 +686,9 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnReadDeviceInfo;
-        private System.Windows.Forms.Button btn_OK;
         private System.Windows.Forms.TextBox tb_UnitName;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btn_Edit;
+        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.TextBox tb_UserName;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tb_UnitID;
@@ -706,9 +706,9 @@
         private System.Windows.Forms.Button btnRestart;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox comboUserID;
-        private System.Windows.Forms.Button btn_exit;
-        private System.Windows.Forms.Button btn_CheckDev;
-        private System.Windows.Forms.Button btn_Logon;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnCheckDev;
+        private System.Windows.Forms.Button btnLogon;
         private System.Windows.Forms.TextBox tb_Password;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox gb_StatusCommand;
