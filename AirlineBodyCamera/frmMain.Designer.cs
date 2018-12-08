@@ -41,28 +41,28 @@
             this.comboIDType = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btn_ChangePWd = new System.Windows.Forms.Button();
-            this.btn_EcjetSD = new System.Windows.Forms.Button();
+            this.btnEjectSD = new System.Windows.Forms.Button();
             this.btn_SyncDevTime = new System.Windows.Forms.Button();
             this.btn_SetMSDC = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btn_UpdataFile = new System.Windows.Forms.Button();
-            this.pg_Updata = new System.Windows.Forms.ProgressBar();
-            this.btn_FilePathChose = new System.Windows.Forms.Button();
-            this.tb_FilePath = new System.Windows.Forms.TextBox();
+            this.btnUpdataFile = new System.Windows.Forms.Button();
+            this.pbarUpdate = new System.Windows.Forms.ProgressBar();
+            this.btnOpenFile = new System.Windows.Forms.Button();
+            this.txtFilePath = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnReadDeviceInfo = new System.Windows.Forms.Button();
-            this.tb_UnitName = new System.Windows.Forms.TextBox();
+            this.txtUnitName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.tb_UserName = new System.Windows.Forms.TextBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.tb_UnitID = new System.Windows.Forms.TextBox();
+            this.txtUnitID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.tb_UserID = new System.Windows.Forms.TextBox();
+            this.txtUserID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.tb_DevID = new System.Windows.Forms.TextBox();
+            this.txtDevID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tb_Battery = new System.Windows.Forms.TextBox();
@@ -79,7 +79,7 @@
             this.tb_Password = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.gb_StatusCommand = new System.Windows.Forms.GroupBox();
-            this.lb_StateInfo = new System.Windows.Forms.ListBox();
+            this.lstInfo = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grbChangePassword.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -110,6 +110,7 @@
             this.label1.Size = new System.Drawing.Size(459, 62);
             this.label1.TabIndex = 1;
             this.label1.Text = "执勤记录仪管理软件";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // grbChangePassword
             // 
@@ -161,7 +162,7 @@
             this.btnChangePwdOK.Location = new System.Drawing.Point(317, 17);
             this.btnChangePwdOK.Name = "btnChangePwdOK";
             this.btnChangePwdOK.Size = new System.Drawing.Size(61, 30);
-            this.btnChangePwdOK.TabIndex = 6;
+            this.btnChangePwdOK.TabIndex = 20;
             this.btnChangePwdOK.Text = "确认修改";
             this.btnChangePwdOK.UseVisualStyleBackColor = true;
             this.btnChangePwdOK.Click += new System.EventHandler(this.btnChangePwdOK_Click);
@@ -173,7 +174,7 @@
             this.txtNewPwd2.Name = "txtNewPwd2";
             this.txtNewPwd2.PasswordChar = '*';
             this.txtNewPwd2.Size = new System.Drawing.Size(102, 21);
-            this.txtNewPwd2.TabIndex = 2;
+            this.txtNewPwd2.TabIndex = 19;
             this.txtNewPwd2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtNewPwd1
@@ -183,7 +184,7 @@
             this.txtNewPwd1.Name = "txtNewPwd1";
             this.txtNewPwd1.PasswordChar = '*';
             this.txtNewPwd1.Size = new System.Drawing.Size(102, 21);
-            this.txtNewPwd1.TabIndex = 1;
+            this.txtNewPwd1.TabIndex = 18;
             this.txtNewPwd1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // comboIDType
@@ -196,13 +197,13 @@
             this.comboIDType.Location = new System.Drawing.Point(50, 27);
             this.comboIDType.Name = "comboIDType";
             this.comboIDType.Size = new System.Drawing.Size(81, 20);
-            this.comboIDType.TabIndex = 0;
+            this.comboIDType.TabIndex = 17;
             // 
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.Color.Transparent;
             this.groupBox6.Controls.Add(this.btn_ChangePWd);
-            this.groupBox6.Controls.Add(this.btn_EcjetSD);
+            this.groupBox6.Controls.Add(this.btnEjectSD);
             this.groupBox6.Controls.Add(this.btn_SyncDevTime);
             this.groupBox6.Controls.Add(this.btn_SetMSDC);
             this.groupBox6.Location = new System.Drawing.Point(10, 281);
@@ -217,26 +218,27 @@
             this.btn_ChangePWd.Location = new System.Drawing.Point(322, 13);
             this.btn_ChangePWd.Name = "btn_ChangePWd";
             this.btn_ChangePWd.Size = new System.Drawing.Size(61, 30);
-            this.btn_ChangePWd.TabIndex = 4;
+            this.btn_ChangePWd.TabIndex = 16;
             this.btn_ChangePWd.Text = "修改密码";
             this.btn_ChangePWd.UseVisualStyleBackColor = true;
             this.btn_ChangePWd.Click += new System.EventHandler(this.btn_ChangePWd_Click);
             // 
-            // btn_EcjetSD
+            // btnEjectSD
             // 
-            this.btn_EcjetSD.Location = new System.Drawing.Point(221, 13);
-            this.btn_EcjetSD.Name = "btn_EcjetSD";
-            this.btn_EcjetSD.Size = new System.Drawing.Size(61, 30);
-            this.btn_EcjetSD.TabIndex = 2;
-            this.btn_EcjetSD.Text = "打开磁盘";
-            this.btn_EcjetSD.UseVisualStyleBackColor = true;
+            this.btnEjectSD.Location = new System.Drawing.Point(221, 13);
+            this.btnEjectSD.Name = "btnEjectSD";
+            this.btnEjectSD.Size = new System.Drawing.Size(61, 30);
+            this.btnEjectSD.TabIndex = 15;
+            this.btnEjectSD.Text = "打开磁盘";
+            this.btnEjectSD.UseVisualStyleBackColor = true;
+            this.btnEjectSD.Click += new System.EventHandler(this.btn_EcjetSD_Click);
             // 
             // btn_SyncDevTime
             // 
             this.btn_SyncDevTime.Location = new System.Drawing.Point(18, 13);
             this.btn_SyncDevTime.Name = "btn_SyncDevTime";
             this.btn_SyncDevTime.Size = new System.Drawing.Size(61, 30);
-            this.btn_SyncDevTime.TabIndex = 0;
+            this.btn_SyncDevTime.TabIndex = 13;
             this.btn_SyncDevTime.Text = "时间同步";
             this.btn_SyncDevTime.UseVisualStyleBackColor = true;
             this.btn_SyncDevTime.Click += new System.EventHandler(this.btn_SyncDevTime_Click);
@@ -246,7 +248,7 @@
             this.btn_SetMSDC.Location = new System.Drawing.Point(130, 13);
             this.btn_SetMSDC.Name = "btn_SetMSDC";
             this.btn_SetMSDC.Size = new System.Drawing.Size(61, 30);
-            this.btn_SetMSDC.TabIndex = 1;
+            this.btn_SetMSDC.TabIndex = 14;
             this.btn_SetMSDC.Text = "U盘使能";
             this.btn_SetMSDC.UseVisualStyleBackColor = true;
             this.btn_SetMSDC.Click += new System.EventHandler(this.btn_SetMSDC_Click);
@@ -254,10 +256,10 @@
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox5.Controls.Add(this.btn_UpdataFile);
-            this.groupBox5.Controls.Add(this.pg_Updata);
-            this.groupBox5.Controls.Add(this.btn_FilePathChose);
-            this.groupBox5.Controls.Add(this.tb_FilePath);
+            this.groupBox5.Controls.Add(this.btnUpdataFile);
+            this.groupBox5.Controls.Add(this.pbarUpdate);
+            this.groupBox5.Controls.Add(this.btnOpenFile);
+            this.groupBox5.Controls.Add(this.txtFilePath);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Location = new System.Drawing.Point(12, 412);
@@ -267,40 +269,40 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "系统升级";
             // 
-            // btn_UpdataFile
+            // btnUpdataFile
             // 
-            this.btn_UpdataFile.Location = new System.Drawing.Point(313, 41);
-            this.btn_UpdataFile.Name = "btn_UpdataFile";
-            this.btn_UpdataFile.Size = new System.Drawing.Size(63, 30);
-            this.btn_UpdataFile.TabIndex = 26;
-            this.btn_UpdataFile.Text = "升级";
-            this.btn_UpdataFile.UseVisualStyleBackColor = true;
-            this.btn_UpdataFile.Click += new System.EventHandler(this.btn_UpdataFile_Click);
+            this.btnUpdataFile.Location = new System.Drawing.Point(313, 41);
+            this.btnUpdataFile.Name = "btnUpdataFile";
+            this.btnUpdataFile.Size = new System.Drawing.Size(63, 30);
+            this.btnUpdataFile.TabIndex = 23;
+            this.btnUpdataFile.Text = "升级";
+            this.btnUpdataFile.UseVisualStyleBackColor = true;
+            this.btnUpdataFile.Click += new System.EventHandler(this.btn_UpdataFile_Click);
             // 
-            // pg_Updata
+            // pbarUpdate
             // 
-            this.pg_Updata.Location = new System.Drawing.Point(62, 40);
-            this.pg_Updata.Name = "pg_Updata";
-            this.pg_Updata.Size = new System.Drawing.Size(244, 23);
-            this.pg_Updata.TabIndex = 25;
+            this.pbarUpdate.Location = new System.Drawing.Point(62, 40);
+            this.pbarUpdate.Name = "pbarUpdate";
+            this.pbarUpdate.Size = new System.Drawing.Size(244, 23);
+            this.pbarUpdate.TabIndex = 25;
             // 
-            // btn_FilePathChose
+            // btnOpenFile
             // 
-            this.btn_FilePathChose.Location = new System.Drawing.Point(313, 10);
-            this.btn_FilePathChose.Name = "btn_FilePathChose";
-            this.btn_FilePathChose.Size = new System.Drawing.Size(63, 30);
-            this.btn_FilePathChose.TabIndex = 2;
-            this.btn_FilePathChose.Text = "选择";
-            this.btn_FilePathChose.UseVisualStyleBackColor = true;
-            this.btn_FilePathChose.Click += new System.EventHandler(this.btn_FilePathChose_Click);
+            this.btnOpenFile.Location = new System.Drawing.Point(313, 10);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(63, 30);
+            this.btnOpenFile.TabIndex = 22;
+            this.btnOpenFile.Text = "选择";
+            this.btnOpenFile.UseVisualStyleBackColor = true;
+            this.btnOpenFile.Click += new System.EventHandler(this.btn_FilePathChose_Click);
             // 
-            // tb_FilePath
+            // txtFilePath
             // 
-            this.tb_FilePath.Location = new System.Drawing.Point(62, 14);
-            this.tb_FilePath.Name = "tb_FilePath";
-            this.tb_FilePath.ReadOnly = true;
-            this.tb_FilePath.Size = new System.Drawing.Size(244, 21);
-            this.tb_FilePath.TabIndex = 24;
+            this.txtFilePath.Location = new System.Drawing.Point(62, 14);
+            this.txtFilePath.Name = "txtFilePath";
+            this.txtFilePath.ReadOnly = true;
+            this.txtFilePath.Size = new System.Drawing.Size(244, 21);
+            this.txtFilePath.TabIndex = 21;
             // 
             // label13
             // 
@@ -324,16 +326,16 @@
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.btnReadDeviceInfo);
-            this.groupBox3.Controls.Add(this.tb_UnitName);
+            this.groupBox3.Controls.Add(this.txtUnitName);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.btnEdit);
-            this.groupBox3.Controls.Add(this.tb_UserName);
+            this.groupBox3.Controls.Add(this.txtUserName);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.tb_UnitID);
+            this.groupBox3.Controls.Add(this.txtUnitID);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.tb_UserID);
+            this.groupBox3.Controls.Add(this.txtUserID);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.tb_DevID);
+            this.groupBox3.Controls.Add(this.txtDevID);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(12, 171);
             this.groupBox3.Name = "groupBox3";
@@ -345,22 +347,22 @@
             // btnReadDeviceInfo
             // 
             this.btnReadDeviceInfo.Enabled = false;
-            this.btnReadDeviceInfo.Location = new System.Drawing.Point(315, 60);
+            this.btnReadDeviceInfo.Location = new System.Drawing.Point(314, 60);
             this.btnReadDeviceInfo.Name = "btnReadDeviceInfo";
             this.btnReadDeviceInfo.Size = new System.Drawing.Size(59, 30);
-            this.btnReadDeviceInfo.TabIndex = 18;
+            this.btnReadDeviceInfo.TabIndex = 12;
             this.btnReadDeviceInfo.Text = "读取";
             this.btnReadDeviceInfo.UseVisualStyleBackColor = true;
             this.btnReadDeviceInfo.Click += new System.EventHandler(this.btnReadDeviceInfo_Click);
             // 
-            // tb_UnitName
+            // txtUnitName
             // 
-            this.tb_UnitName.Location = new System.Drawing.Point(65, 74);
-            this.tb_UnitName.MaxLength = 32;
-            this.tb_UnitName.Name = "tb_UnitName";
-            this.tb_UnitName.Size = new System.Drawing.Size(236, 21);
-            this.tb_UnitName.TabIndex = 15;
-            this.tb_UnitName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUnitName.Location = new System.Drawing.Point(65, 74);
+            this.txtUnitName.MaxLength = 32;
+            this.txtUnitName.Name = "txtUnitName";
+            this.txtUnitName.Size = new System.Drawing.Size(236, 21);
+            this.txtUnitName.TabIndex = 10;
+            this.txtUnitName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label9
             // 
@@ -376,19 +378,19 @@
             this.btnEdit.Location = new System.Drawing.Point(313, 17);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(61, 30);
-            this.btnEdit.TabIndex = 16;
+            this.btnEdit.TabIndex = 11;
             this.btnEdit.Text = "编辑";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // tb_UserName
+            // txtUserName
             // 
-            this.tb_UserName.Location = new System.Drawing.Point(219, 44);
-            this.tb_UserName.MaxLength = 32;
-            this.tb_UserName.Name = "tb_UserName";
-            this.tb_UserName.Size = new System.Drawing.Size(82, 21);
-            this.tb_UserName.TabIndex = 13;
-            this.tb_UserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUserName.Location = new System.Drawing.Point(219, 44);
+            this.txtUserName.MaxLength = 32;
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(82, 21);
+            this.txtUserName.TabIndex = 9;
+            this.txtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
             // 
@@ -399,14 +401,14 @@
             this.label8.TabIndex = 12;
             this.label8.Text = "用户名称";
             // 
-            // tb_UnitID
+            // txtUnitID
             // 
-            this.tb_UnitID.Location = new System.Drawing.Point(75, 45);
-            this.tb_UnitID.MaxLength = 12;
-            this.tb_UnitID.Name = "tb_UnitID";
-            this.tb_UnitID.Size = new System.Drawing.Size(80, 21);
-            this.tb_UnitID.TabIndex = 11;
-            this.tb_UnitID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUnitID.Location = new System.Drawing.Point(75, 45);
+            this.txtUnitID.MaxLength = 12;
+            this.txtUnitID.Name = "txtUnitID";
+            this.txtUnitID.Size = new System.Drawing.Size(80, 21);
+            this.txtUnitID.TabIndex = 8;
+            this.txtUnitID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
             // 
@@ -417,14 +419,14 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "单位编号";
             // 
-            // tb_UserID
+            // txtUserID
             // 
-            this.tb_UserID.Location = new System.Drawing.Point(219, 17);
-            this.tb_UserID.MaxLength = 6;
-            this.tb_UserID.Name = "tb_UserID";
-            this.tb_UserID.Size = new System.Drawing.Size(82, 21);
-            this.tb_UserID.TabIndex = 9;
-            this.tb_UserID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUserID.Location = new System.Drawing.Point(219, 17);
+            this.txtUserID.MaxLength = 6;
+            this.txtUserID.Name = "txtUserID";
+            this.txtUserID.Size = new System.Drawing.Size(82, 21);
+            this.txtUserID.TabIndex = 7;
+            this.txtUserID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -435,14 +437,14 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "用户编号";
             // 
-            // tb_DevID
+            // txtDevID
             // 
-            this.tb_DevID.Location = new System.Drawing.Point(75, 18);
-            this.tb_DevID.MaxLength = 7;
-            this.tb_DevID.Name = "tb_DevID";
-            this.tb_DevID.Size = new System.Drawing.Size(80, 21);
-            this.tb_DevID.TabIndex = 7;
-            this.tb_DevID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDevID.Location = new System.Drawing.Point(75, 18);
+            this.txtDevID.MaxLength = 7;
+            this.txtDevID.Name = "txtDevID";
+            this.txtDevID.Size = new System.Drawing.Size(80, 21);
+            this.txtDevID.TabIndex = 6;
+            this.txtDevID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
@@ -472,7 +474,7 @@
             this.tb_Battery.Name = "tb_Battery";
             this.tb_Battery.ReadOnly = true;
             this.tb_Battery.Size = new System.Drawing.Size(51, 21);
-            this.tb_Battery.TabIndex = 5;
+            this.tb_Battery.TabIndex = 25;
             this.tb_Battery.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
@@ -490,7 +492,7 @@
             this.tb_Resolution.Name = "tb_Resolution";
             this.tb_Resolution.ReadOnly = true;
             this.tb_Resolution.Size = new System.Drawing.Size(72, 21);
-            this.tb_Resolution.TabIndex = 3;
+            this.tb_Resolution.TabIndex = 26;
             this.tb_Resolution.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
@@ -528,6 +530,7 @@
             this.btnRestart.TabIndex = 5;
             this.btnRestart.Text = "重启软件";
             this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             // 
             // label21
             // 
@@ -551,14 +554,14 @@
             this.comboUserID.Margin = new System.Windows.Forms.Padding(2);
             this.comboUserID.Name = "comboUserID";
             this.comboUserID.Size = new System.Drawing.Size(71, 20);
-            this.comboUserID.TabIndex = 25;
+            this.comboUserID.TabIndex = 0;
             // 
             // btnExit
             // 
             this.btnExit.Location = new System.Drawing.Point(200, 43);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(65, 30);
-            this.btnExit.TabIndex = 6;
+            this.btnExit.TabIndex = 4;
             this.btnExit.Text = "退出";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -568,7 +571,7 @@
             this.btnCheckDev.Location = new System.Drawing.Point(133, 12);
             this.btnCheckDev.Name = "btnCheckDev";
             this.btnCheckDev.Size = new System.Drawing.Size(65, 30);
-            this.btnCheckDev.TabIndex = 0;
+            this.btnCheckDev.TabIndex = 2;
             this.btnCheckDev.Text = "检查设备";
             this.btnCheckDev.UseVisualStyleBackColor = true;
             this.btnCheckDev.Click += new System.EventHandler(this.btn_CheckDev_Click);
@@ -578,7 +581,7 @@
             this.btnLogon.Location = new System.Drawing.Point(132, 42);
             this.btnLogon.Name = "btnLogon";
             this.btnLogon.Size = new System.Drawing.Size(65, 30);
-            this.btnLogon.TabIndex = 1;
+            this.btnLogon.TabIndex = 3;
             this.btnLogon.Text = "登录";
             this.btnLogon.UseVisualStyleBackColor = true;
             this.btnLogon.Click += new System.EventHandler(this.btn_Logon_Click);
@@ -591,8 +594,9 @@
             this.tb_Password.Name = "tb_Password";
             this.tb_Password.PasswordChar = '*';
             this.tb_Password.Size = new System.Drawing.Size(70, 21);
-            this.tb_Password.TabIndex = 3;
+            this.tb_Password.TabIndex = 1;
             this.tb_Password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Password_KeyPress);
             // 
             // label2
             // 
@@ -606,7 +610,7 @@
             // gb_StatusCommand
             // 
             this.gb_StatusCommand.BackColor = System.Drawing.Color.Transparent;
-            this.gb_StatusCommand.Controls.Add(this.lb_StateInfo);
+            this.gb_StatusCommand.Controls.Add(this.lstInfo);
             this.gb_StatusCommand.Location = new System.Drawing.Point(422, 85);
             this.gb_StatusCommand.Name = "gb_StatusCommand";
             this.gb_StatusCommand.Size = new System.Drawing.Size(354, 404);
@@ -614,14 +618,14 @@
             this.gb_StatusCommand.TabStop = false;
             this.gb_StatusCommand.Text = "状态信息";
             // 
-            // lb_StateInfo
+            // lstInfo
             // 
-            this.lb_StateInfo.FormattingEnabled = true;
-            this.lb_StateInfo.ItemHeight = 12;
-            this.lb_StateInfo.Location = new System.Drawing.Point(6, 15);
-            this.lb_StateInfo.Name = "lb_StateInfo";
-            this.lb_StateInfo.Size = new System.Drawing.Size(342, 376);
-            this.lb_StateInfo.TabIndex = 9;
+            this.lstInfo.FormattingEnabled = true;
+            this.lstInfo.ItemHeight = 12;
+            this.lstInfo.Location = new System.Drawing.Point(6, 15);
+            this.lstInfo.Name = "lstInfo";
+            this.lstInfo.Size = new System.Drawing.Size(342, 376);
+            this.lstInfo.TabIndex = 9;
             // 
             // frmMain
             // 
@@ -641,6 +645,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMain";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grbChangePassword.ResumeLayout(false);
@@ -674,28 +679,28 @@
         private System.Windows.Forms.ComboBox comboIDType;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button btn_ChangePWd;
-        private System.Windows.Forms.Button btn_EcjetSD;
+        private System.Windows.Forms.Button btnEjectSD;
         private System.Windows.Forms.Button btn_SyncDevTime;
         private System.Windows.Forms.Button btn_SetMSDC;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button btn_UpdataFile;
-        private System.Windows.Forms.ProgressBar pg_Updata;
-        private System.Windows.Forms.Button btn_FilePathChose;
-        private System.Windows.Forms.TextBox tb_FilePath;
+        private System.Windows.Forms.Button btnUpdataFile;
+        private System.Windows.Forms.ProgressBar pbarUpdate;
+        private System.Windows.Forms.Button btnOpenFile;
+        private System.Windows.Forms.TextBox txtFilePath;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnReadDeviceInfo;
-        private System.Windows.Forms.TextBox tb_UnitName;
+        private System.Windows.Forms.TextBox txtUnitName;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.TextBox tb_UserName;
+        private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tb_UnitID;
+        private System.Windows.Forms.TextBox txtUnitID;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tb_UserID;
+        private System.Windows.Forms.TextBox txtUserID;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tb_DevID;
+        private System.Windows.Forms.TextBox txtDevID;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox tb_Battery;
@@ -712,6 +717,6 @@
         private System.Windows.Forms.TextBox tb_Password;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox gb_StatusCommand;
-        private System.Windows.Forms.ListBox lb_StateInfo;
+        private System.Windows.Forms.ListBox lstInfo;
     }
 }
