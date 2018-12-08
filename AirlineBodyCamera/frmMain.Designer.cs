@@ -80,6 +80,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.gb_StatusCommand = new System.Windows.Forms.GroupBox();
             this.lstInfo = new System.Windows.Forms.ListBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tslblSN = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tslblBatt = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tslblResolution = new System.Windows.Forms.ToolStripStatusLabel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chkSetCopy = new System.Windows.Forms.CheckBox();
+            this.txtCopyFileDestPath = new System.Windows.Forms.TextBox();
+            this.btnOpenFolder = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnCopyFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grbChangePassword.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -88,12 +98,14 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gb_StatusCommand.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(74, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(50, 19);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(212, 57);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -105,12 +117,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(293, 17);
+            this.label1.Location = new System.Drawing.Point(269, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(459, 62);
             this.label1.TabIndex = 1;
             this.label1.Text = "执勤记录仪管理软件";
-
             // 
             // grbChangePassword
             // 
@@ -123,7 +134,7 @@
             this.grbChangePassword.Controls.Add(this.txtNewPwd1);
             this.grbChangePassword.Controls.Add(this.comboIDType);
             this.grbChangePassword.Enabled = false;
-            this.grbChangePassword.Location = new System.Drawing.Point(10, 341);
+            this.grbChangePassword.Location = new System.Drawing.Point(10, 372);
             this.grbChangePassword.Name = "grbChangePassword";
             this.grbChangePassword.Size = new System.Drawing.Size(388, 65);
             this.grbChangePassword.TabIndex = 21;
@@ -202,11 +213,12 @@
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox6.Controls.Add(this.btnCopyFile);
             this.groupBox6.Controls.Add(this.btn_ChangePWd);
             this.groupBox6.Controls.Add(this.btnEjectSD);
             this.groupBox6.Controls.Add(this.btn_SyncDevTime);
             this.groupBox6.Controls.Add(this.btn_SetMSDC);
-            this.groupBox6.Location = new System.Drawing.Point(10, 281);
+            this.groupBox6.Location = new System.Drawing.Point(10, 263);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(390, 50);
             this.groupBox6.TabIndex = 16;
@@ -215,7 +227,7 @@
             // btn_ChangePWd
             // 
             this.btn_ChangePWd.Enabled = false;
-            this.btn_ChangePWd.Location = new System.Drawing.Point(322, 13);
+            this.btn_ChangePWd.Location = new System.Drawing.Point(320, 13);
             this.btn_ChangePWd.Name = "btn_ChangePWd";
             this.btn_ChangePWd.Size = new System.Drawing.Size(61, 30);
             this.btn_ChangePWd.TabIndex = 16;
@@ -225,7 +237,7 @@
             // 
             // btnEjectSD
             // 
-            this.btnEjectSD.Location = new System.Drawing.Point(221, 13);
+            this.btnEjectSD.Location = new System.Drawing.Point(142, 13);
             this.btnEjectSD.Name = "btnEjectSD";
             this.btnEjectSD.Size = new System.Drawing.Size(61, 30);
             this.btnEjectSD.TabIndex = 15;
@@ -235,7 +247,7 @@
             // 
             // btn_SyncDevTime
             // 
-            this.btn_SyncDevTime.Location = new System.Drawing.Point(18, 13);
+            this.btn_SyncDevTime.Location = new System.Drawing.Point(6, 13);
             this.btn_SyncDevTime.Name = "btn_SyncDevTime";
             this.btn_SyncDevTime.Size = new System.Drawing.Size(61, 30);
             this.btn_SyncDevTime.TabIndex = 13;
@@ -245,7 +257,7 @@
             // 
             // btn_SetMSDC
             // 
-            this.btn_SetMSDC.Location = new System.Drawing.Point(130, 13);
+            this.btn_SetMSDC.Location = new System.Drawing.Point(74, 13);
             this.btn_SetMSDC.Name = "btn_SetMSDC";
             this.btn_SetMSDC.Size = new System.Drawing.Size(61, 30);
             this.btn_SetMSDC.TabIndex = 14;
@@ -262,7 +274,7 @@
             this.groupBox5.Controls.Add(this.txtFilePath);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Location = new System.Drawing.Point(12, 412);
+            this.groupBox5.Location = new System.Drawing.Point(9, 439);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(386, 77);
             this.groupBox5.TabIndex = 20;
@@ -337,9 +349,9 @@
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.txtDevID);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(12, 171);
+            this.groupBox3.Location = new System.Drawing.Point(12, 168);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(386, 108);
+            this.groupBox3.Size = new System.Drawing.Size(386, 91);
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "执法仪信息";
@@ -347,7 +359,7 @@
             // btnReadDeviceInfo
             // 
             this.btnReadDeviceInfo.Enabled = false;
-            this.btnReadDeviceInfo.Location = new System.Drawing.Point(314, 60);
+            this.btnReadDeviceInfo.Location = new System.Drawing.Point(314, 54);
             this.btnReadDeviceInfo.Name = "btnReadDeviceInfo";
             this.btnReadDeviceInfo.Size = new System.Drawing.Size(59, 30);
             this.btnReadDeviceInfo.TabIndex = 12;
@@ -357,7 +369,7 @@
             // 
             // txtUnitName
             // 
-            this.txtUnitName.Location = new System.Drawing.Point(65, 74);
+            this.txtUnitName.Location = new System.Drawing.Point(65, 64);
             this.txtUnitName.MaxLength = 32;
             this.txtUnitName.Name = "txtUnitName";
             this.txtUnitName.Size = new System.Drawing.Size(236, 21);
@@ -367,7 +379,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 78);
+            this.label9.Location = new System.Drawing.Point(6, 68);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 12);
             this.label9.TabIndex = 14;
@@ -375,7 +387,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(313, 17);
+            this.btnEdit.Location = new System.Drawing.Point(313, 13);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(61, 30);
             this.btnEdit.TabIndex = 11;
@@ -385,7 +397,7 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(219, 44);
+            this.txtUserName.Location = new System.Drawing.Point(219, 38);
             this.txtUserName.MaxLength = 32;
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(82, 21);
@@ -395,7 +407,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(160, 47);
+            this.label8.Location = new System.Drawing.Point(160, 41);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 12;
@@ -403,7 +415,7 @@
             // 
             // txtUnitID
             // 
-            this.txtUnitID.Location = new System.Drawing.Point(75, 45);
+            this.txtUnitID.Location = new System.Drawing.Point(75, 39);
             this.txtUnitID.MaxLength = 12;
             this.txtUnitID.Name = "txtUnitID";
             this.txtUnitID.Size = new System.Drawing.Size(80, 21);
@@ -413,7 +425,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 49);
+            this.label7.Location = new System.Drawing.Point(11, 43);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 12);
             this.label7.TabIndex = 10;
@@ -421,7 +433,7 @@
             // 
             // txtUserID
             // 
-            this.txtUserID.Location = new System.Drawing.Point(219, 17);
+            this.txtUserID.Location = new System.Drawing.Point(219, 13);
             this.txtUserID.MaxLength = 6;
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.Size = new System.Drawing.Size(82, 21);
@@ -431,7 +443,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(161, 21);
+            this.label6.Location = new System.Drawing.Point(161, 17);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 8;
@@ -439,7 +451,7 @@
             // 
             // txtDevID
             // 
-            this.txtDevID.Location = new System.Drawing.Point(75, 18);
+            this.txtDevID.Location = new System.Drawing.Point(75, 14);
             this.txtDevID.MaxLength = 7;
             this.txtDevID.Name = "txtDevID";
             this.txtDevID.Size = new System.Drawing.Size(80, 21);
@@ -449,7 +461,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 23);
+            this.label5.Location = new System.Drawing.Point(10, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 6;
@@ -462,15 +474,15 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.tb_Resolution);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(289, 85);
+            this.groupBox2.Location = new System.Drawing.Point(285, 85);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(125, 80);
+            this.groupBox2.Size = new System.Drawing.Size(115, 80);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             // 
             // tb_Battery
             // 
-            this.tb_Battery.Location = new System.Drawing.Point(50, 22);
+            this.tb_Battery.Location = new System.Drawing.Point(49, 22);
             this.tb_Battery.Name = "tb_Battery";
             this.tb_Battery.ReadOnly = true;
             this.tb_Battery.Size = new System.Drawing.Size(51, 21);
@@ -488,7 +500,7 @@
             // 
             // tb_Resolution
             // 
-            this.tb_Resolution.Location = new System.Drawing.Point(43, 52);
+            this.tb_Resolution.Location = new System.Drawing.Point(41, 52);
             this.tb_Resolution.Name = "tb_Resolution";
             this.tb_Resolution.ReadOnly = true;
             this.tb_Resolution.Size = new System.Drawing.Size(72, 21);
@@ -498,7 +510,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 56);
+            this.label4.Location = new System.Drawing.Point(2, 56);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 2;
@@ -517,7 +529,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 85);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(274, 80);
+            this.groupBox1.Size = new System.Drawing.Size(270, 80);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "登录信息";
@@ -568,7 +580,7 @@
             // 
             // btnCheckDev
             // 
-            this.btnCheckDev.Location = new System.Drawing.Point(133, 12);
+            this.btnCheckDev.Location = new System.Drawing.Point(133, 11);
             this.btnCheckDev.Name = "btnCheckDev";
             this.btnCheckDev.Size = new System.Drawing.Size(65, 30);
             this.btnCheckDev.TabIndex = 2;
@@ -611,9 +623,9 @@
             // 
             this.gb_StatusCommand.BackColor = System.Drawing.Color.Transparent;
             this.gb_StatusCommand.Controls.Add(this.lstInfo);
-            this.gb_StatusCommand.Location = new System.Drawing.Point(422, 85);
+            this.gb_StatusCommand.Location = new System.Drawing.Point(406, 85);
             this.gb_StatusCommand.Name = "gb_StatusCommand";
-            this.gb_StatusCommand.Size = new System.Drawing.Size(354, 404);
+            this.gb_StatusCommand.Size = new System.Drawing.Size(354, 431);
             this.gb_StatusCommand.TabIndex = 22;
             this.gb_StatusCommand.TabStop = false;
             this.gb_StatusCommand.Text = "状态信息";
@@ -622,17 +634,105 @@
             // 
             this.lstInfo.FormattingEnabled = true;
             this.lstInfo.ItemHeight = 12;
-            this.lstInfo.Location = new System.Drawing.Point(6, 15);
+            this.lstInfo.Location = new System.Drawing.Point(6, 14);
             this.lstInfo.Name = "lstInfo";
-            this.lstInfo.Size = new System.Drawing.Size(342, 376);
+            this.lstInfo.Size = new System.Drawing.Size(342, 412);
             this.lstInfo.TabIndex = 9;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslblSN,
+            this.tslblBatt,
+            this.tslblResolution});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 527);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(776, 22);
+            this.statusStrip1.TabIndex = 23;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tslblSN
+            // 
+            this.tslblSN.Name = "tslblSN";
+            this.tslblSN.Size = new System.Drawing.Size(0, 17);
+            // 
+            // tslblBatt
+            // 
+            this.tslblBatt.Name = "tslblBatt";
+            this.tslblBatt.Size = new System.Drawing.Size(0, 17);
+            // 
+            // tslblResolution
+            // 
+            this.tslblResolution.Name = "tslblResolution";
+            this.tslblResolution.Size = new System.Drawing.Size(0, 17);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.btnOpenFolder);
+            this.groupBox4.Controls.Add(this.txtCopyFileDestPath);
+            this.groupBox4.Controls.Add(this.chkSetCopy);
+            this.groupBox4.Location = new System.Drawing.Point(9, 319);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(389, 52);
+            this.groupBox4.TabIndex = 24;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "自动复制文件设置";
+            // 
+            // chkSetCopy
+            // 
+            this.chkSetCopy.AutoSize = true;
+            this.chkSetCopy.Location = new System.Drawing.Point(11, 21);
+            this.chkSetCopy.Name = "chkSetCopy";
+            this.chkSetCopy.Size = new System.Drawing.Size(72, 16);
+            this.chkSetCopy.TabIndex = 0;
+            this.chkSetCopy.Text = "自动复制";
+            this.chkSetCopy.UseVisualStyleBackColor = true;
+            // 
+            // txtCopyFileDestPath
+            // 
+            this.txtCopyFileDestPath.Location = new System.Drawing.Point(141, 19);
+            this.txtCopyFileDestPath.Name = "txtCopyFileDestPath";
+            this.txtCopyFileDestPath.Size = new System.Drawing.Size(169, 21);
+            this.txtCopyFileDestPath.TabIndex = 1;
+            // 
+            // btnOpenFolder
+            // 
+            this.btnOpenFolder.Location = new System.Drawing.Point(316, 13);
+            this.btnOpenFolder.Name = "btnOpenFolder";
+            this.btnOpenFolder.Size = new System.Drawing.Size(63, 30);
+            this.btnOpenFolder.TabIndex = 26;
+            this.btnOpenFolder.Text = "选择";
+            this.btnOpenFolder.UseVisualStyleBackColor = true;
+            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(84, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 12);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "目标地址";
+            // 
+            // btnCopyFile
+            // 
+            this.btnCopyFile.Location = new System.Drawing.Point(210, 13);
+            this.btnCopyFile.Name = "btnCopyFile";
+            this.btnCopyFile.Size = new System.Drawing.Size(103, 30);
+            this.btnCopyFile.TabIndex = 17;
+            this.btnCopyFile.Text = "复制执法仪文件";
+            this.btnCopyFile.UseVisualStyleBackColor = true;
+            this.btnCopyFile.Click += new System.EventHandler(this.btnCopyFile_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(788, 496);
+            this.ClientSize = new System.Drawing.Size(776, 549);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.gb_StatusCommand);
             this.Controls.Add(this.grbChangePassword);
             this.Controls.Add(this.groupBox6);
@@ -642,6 +742,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMain";
@@ -660,6 +761,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.gb_StatusCommand.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -718,5 +823,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox gb_StatusCommand;
         private System.Windows.Forms.ListBox lstInfo;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tslblSN;
+        private System.Windows.Forms.ToolStripStatusLabel tslblBatt;
+        private System.Windows.Forms.ToolStripStatusLabel tslblResolution;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnOpenFolder;
+        private System.Windows.Forms.TextBox txtCopyFileDestPath;
+        private System.Windows.Forms.CheckBox chkSetCopy;
+        private System.Windows.Forms.Button btnCopyFile;
     }
 }

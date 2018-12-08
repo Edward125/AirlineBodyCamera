@@ -404,6 +404,7 @@ namespace AirlineBodyCamera
             //////////////////////////////////////////////////////////////////////////////
             //执法仪电量
             this.tb_Battery.Text = BatteryLevel.ToString() + " %";
+            tslblBatt.Text = "电量:" + BatteryLevel.ToString() + " %";
             updateMessage(lstInfo, "获取电量值成功(" + BatteryLevel.ToString() + " %).");
             /////////////////////////////////////////////////////////////////////////////
             //获取执法记录仪分辨率
@@ -411,6 +412,7 @@ namespace AirlineBodyCamera
             if (GetDeviceResolution(LoginDevice, DevicePassword, out DR))
             {
                 this.tb_Resolution.Text = DR.Resolution_Width.ToString() + "*" + DR.Resolution_Height.ToString();
+                tslblResolution.Text ="分辨率:" + DR.Resolution_Width.ToString() + "*" + DR.Resolution_Height.ToString();
                 updateMessage(lstInfo, "获取视频分辨率参数成功(" + DR.Resolution_Width.ToString() + "*" + DR.Resolution_Height.ToString() + ").");
 
                 if (LoginDevice == DeviceType.EasyStorage)
@@ -426,11 +428,9 @@ namespace AirlineBodyCamera
                 this.txtUserID.Text = DI.userNo; ///System.Text.Encoding.Default.GetString(uuDevice.userNo);
                 this.txtUserName.Text = DI.userName; // System.Text.Encoding.Default.GetString(uuDevice.userName);
                 this.txtUnitID.Text = DI.unitNo;  //System.Text.Encoding.Default.GetString(uuDevice.unitNo);
-                this.txtUnitName.Text = DI.unitName; //System.Text.Encoding.Default.GetString(uuDevice.unitName);        
+                this.txtUnitName.Text = DI.unitName; //System.Text.Encoding.Default.GetString(uuDevice.unitName); 
+                tslblSN.Text = "当前设备编号:" + DI.cSerial;
             }
-
-            return;
-
         }
 
 
@@ -590,12 +590,19 @@ namespace AirlineBodyCamera
             if (GetDeviceInfo(LoginDevice, DevicePassword, out DI))
             {
                 updateMessage(lstInfo, "获取执法仪本机信息成功.");
+                DI.cSerial = DI.cSerial.TrimEnd('\0');
                 this.txtDevID.Text = DI.cSerial; //System.Text.Encoding.Default.GetString(uuDevice.cSerial);
                 this.txtUserID.Text = DI.userNo; ///System.Text.Encoding.Default.GetString(uuDevice.userNo);
                 this.txtUserName.Text = DI.userName; // System.Text.Encoding.Default.GetString(uuDevice.userName);
                 this.txtUnitID.Text = DI.unitNo;  //System.Text.Encoding.Default.GetString(uuDevice.unitNo);
                 this.txtUnitName.Text = DI.unitName; //System.Text.Encoding.Default.GetString(uuDevice.unitName);  
+                tslblSN.Text = "当前设备编号:" + DI.cSerial;
                 btnEdit.Text = "编辑";
+                txtDevID.Enabled = false;
+                txtUserID.Enabled = false;
+                txtUserName.Enabled = false;
+                txtUnitID.Enabled = false;
+                txtUnitName.Enabled = false;
             }
         }
 
@@ -669,6 +676,7 @@ namespace AirlineBodyCamera
                 this.btnOpenFile.Enabled = true;
                 this.btnUpdataFile.Enabled = true;
                 txtFilePath.Enabled = true;
+                btnCopyFile.Enabled = true;
                 updateMessage(lstInfo, "执法仪已进入U盘模式.");
 
             }
@@ -694,22 +702,17 @@ namespace AirlineBodyCamera
                 this.txtUserName.Enabled = false;
                 this.txtUnitID.Enabled = false;
                 this.txtUnitName.Enabled = false;
-
-
                 DeviceInfo di = new DeviceInfo();
-                if (LoginDevice == DeviceType.EasyStorage)
-                    this.txtUserID.Text = this.txtUserID.Text.PadRight(6, '0');
-
                 di.cSerial = this.txtDevID.Text;
                 di.userNo = this.txtUserID.Text;
                 di.userName = this.txtUserName.Text;
                 di.unitNo = this.txtUnitID.Text;
                 di.unitName = this.txtUnitName.Text;
 
-
                 if (WriteDeviceInfo(LoginDevice, DevicePassword, di))
                 {
                     updateMessage(lstInfo, "向执法仪写入信息成功.");
+                    tslblSN.Text = "当前设备编号:" + di.cSerial;
                     //  btnEdit.Text = "编辑";
                 }
 
@@ -806,7 +809,7 @@ namespace AirlineBodyCamera
 
 
 
-            DialogResult dr = MessageBox.Show("是否确认修改密码,修改密码后如果忘记,可能需要刷机才可以充值密码.修改点击是(Y),不修改点击否(N)?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dr = MessageBox.Show("是否确认修改密码,修改密码后如果忘记,可能需要刷机才可以重置密码.修改点击是(Y),不修改点击否(N)?", "修改密码?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 if (SetPwd(LoginDevice, comboIDType, DevicePassword, txtNewPwd1.Text.Trim()))
@@ -911,6 +914,7 @@ namespace AirlineBodyCamera
             btn_ChangePWd.Enabled = false;
             LoginDevice = DeviceType.NA;
             txtFilePath.Enabled = false;
+            btnCopyFile.Enabled = false;
             ClearDeviceInfo();
 
         }
@@ -981,6 +985,80 @@ namespace AirlineBodyCamera
 
         }
 
+        private void btnOpenFolder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog open = new FolderBrowserDialog();
+            open.Description = "请选择执法仪文件需要存在的位置";
+            if (open.ShowDialog() == DialogResult.OK)
+                txtCopyFileDestPath.Text = open.SelectedPath;
+        }
 
+        private void btnCopyFile_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty (txtCopyFileDestPath.Text.Trim ()))
+            {
+
+                DirectoryInfo di = new DirectoryInfo(DestinFolder +@"DCIM");
+                List<FileInformation> list = new List<FileInformation>();
+                list = DirectoryAllFiles.GetAllFiles(new System.IO.DirectoryInfo(DestinFolder + @"DCIM"));
+
+                foreach (var item in list)
+                {
+                    //if (!chklstExtension.Items.Contains(item.FileExtension.ToLower())) //不存在,添加
+                    //    chklstExtension.Items.Add(item.FileExtension.ToLower());
+                    //filesCount++;
+                    //AddItem2ListView(lstViewFileInfoView, filesCount, item.FileExtension, item.FileName, "", item.FileDirectory);
+                    updateMessage(lstInfo, item.FileName);
+                    File.Copy(item.FilePath, txtCopyFileDestPath.Text .Trim () + @"\" + item.FileName);
+
+
+                       
+
+                }
+
+
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public class FileInformation
+        {
+
+            public string FileName { get; set; }
+            public string FilePath { get; set; }
+            public string FileDirectory { get; set; }
+            public string FileExtension{get;set;}
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public class DirectoryAllFiles
+        {
+            static List<FileInformation> FileList = new List<FileInformation>();
+            public static List<FileInformation> GetAllFiles(DirectoryInfo dir)
+            {
+                FileInfo[] allFile = dir.GetFiles();
+                foreach (FileInfo fi in allFile)
+                {
+                    FileList.Add(new FileInformation { 
+                        FileName = fi.Name, 
+                        FilePath = fi.FullName,
+                        FileDirectory = fi.DirectoryName, 
+                        FileExtension = fi.Extension });
+                }
+                DirectoryInfo[] allDir = dir.GetDirectories();
+                foreach (DirectoryInfo d in allDir)
+                {
+                    GetAllFiles(d);
+                }
+                return FileList;
+            }
+        }
     }
 }

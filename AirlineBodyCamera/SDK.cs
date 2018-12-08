@@ -1289,9 +1289,9 @@ namespace SDK
         [StructLayout(LayoutKind.Sequential,CharSet =CharSet.Ansi, Pack = 1)]
         public struct ZFY_INFO
         {
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst =7)]
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst =8)]
             public byte[] cSerial;               //执法记录仪产品序号，不可为空
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 7)]
             public byte[] userNo;                //执法记录仪使用者警号，不可为空
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 33)]
             public byte[] userName;              //执法记录仪使用者姓名，管理系统使用警号关联时可为空
@@ -1415,7 +1415,10 @@ namespace SDK
 
         //传入sPwd,传出SDCapacity iRet，获取tf卡剩余容量
         [DllImport("zfyMC.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int ReadSDCapacity(ref byte SDCapacity, string sPwd, ref int iRet);
+        public static extern int ReadSDCapacity(ref int SDCapacity, string sPwd, ref int iRet);
+
+        [DllImport("zfyMC.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int ReadSDCapacity(ref byte[] SDCapacity, string sPwd, ref int iRet);
 
         //传入UserPwd sPwd,传出 iRet，设置用户密码
         //ZFYDLL_API int  SetUserPassWord(char *UserPwd,char *sPwd,RESULT_FLAG *iRet);
