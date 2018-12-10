@@ -40,16 +40,15 @@
             this.txtNewPwd1 = new System.Windows.Forms.TextBox();
             this.comboIDType = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnCopyFile = new System.Windows.Forms.Button();
             this.btn_ChangePWd = new System.Windows.Forms.Button();
             this.btnEjectSD = new System.Windows.Forms.Button();
             this.btn_SyncDevTime = new System.Windows.Forms.Button();
             this.btn_SetMSDC = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnUpdataFile = new System.Windows.Forms.Button();
-            this.pbarUpdate = new System.Windows.Forms.ProgressBar();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.txtFilePath = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnReadDeviceInfo = new System.Windows.Forms.Button();
@@ -85,11 +84,11 @@
             this.tslblBatt = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslblResolution = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.chkSetCopy = new System.Windows.Forms.CheckBox();
-            this.txtCopyFileDestPath = new System.Windows.Forms.TextBox();
-            this.btnOpenFolder = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnCopyFile = new System.Windows.Forms.Button();
+            this.btnOpenFolder = new System.Windows.Forms.Button();
+            this.txtCopyFileDestPath = new System.Windows.Forms.TextBox();
+            this.chkSetCopy = new System.Windows.Forms.CheckBox();
+            this.tsPbar = new System.Windows.Forms.ToolStripProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grbChangePassword.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -224,6 +223,16 @@
             this.groupBox6.TabIndex = 16;
             this.groupBox6.TabStop = false;
             // 
+            // btnCopyFile
+            // 
+            this.btnCopyFile.Location = new System.Drawing.Point(210, 13);
+            this.btnCopyFile.Name = "btnCopyFile";
+            this.btnCopyFile.Size = new System.Drawing.Size(103, 30);
+            this.btnCopyFile.TabIndex = 17;
+            this.btnCopyFile.Text = "复制执法仪文件";
+            this.btnCopyFile.UseVisualStyleBackColor = true;
+            this.btnCopyFile.Click += new System.EventHandler(this.btnCopyFile_Click);
+            // 
             // btn_ChangePWd
             // 
             this.btn_ChangePWd.Enabled = false;
@@ -269,40 +278,31 @@
             // 
             this.groupBox5.BackColor = System.Drawing.Color.Transparent;
             this.groupBox5.Controls.Add(this.btnUpdataFile);
-            this.groupBox5.Controls.Add(this.pbarUpdate);
             this.groupBox5.Controls.Add(this.btnOpenFile);
             this.groupBox5.Controls.Add(this.txtFilePath);
-            this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Location = new System.Drawing.Point(9, 439);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(386, 77);
+            this.groupBox5.Size = new System.Drawing.Size(386, 47);
             this.groupBox5.TabIndex = 20;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "系统升级";
             // 
             // btnUpdataFile
             // 
-            this.btnUpdataFile.Location = new System.Drawing.Point(313, 41);
+            this.btnUpdataFile.Location = new System.Drawing.Point(342, 9);
             this.btnUpdataFile.Name = "btnUpdataFile";
-            this.btnUpdataFile.Size = new System.Drawing.Size(63, 30);
+            this.btnUpdataFile.Size = new System.Drawing.Size(40, 30);
             this.btnUpdataFile.TabIndex = 23;
             this.btnUpdataFile.Text = "升级";
             this.btnUpdataFile.UseVisualStyleBackColor = true;
             this.btnUpdataFile.Click += new System.EventHandler(this.btn_UpdataFile_Click);
             // 
-            // pbarUpdate
-            // 
-            this.pbarUpdate.Location = new System.Drawing.Point(62, 40);
-            this.pbarUpdate.Name = "pbarUpdate";
-            this.pbarUpdate.Size = new System.Drawing.Size(244, 23);
-            this.pbarUpdate.TabIndex = 25;
-            // 
             // btnOpenFile
             // 
-            this.btnOpenFile.Location = new System.Drawing.Point(313, 10);
+            this.btnOpenFile.Location = new System.Drawing.Point(299, 9);
             this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(63, 30);
+            this.btnOpenFile.Size = new System.Drawing.Size(40, 30);
             this.btnOpenFile.TabIndex = 22;
             this.btnOpenFile.Text = "选择";
             this.btnOpenFile.UseVisualStyleBackColor = true;
@@ -313,17 +313,8 @@
             this.txtFilePath.Location = new System.Drawing.Point(62, 14);
             this.txtFilePath.Name = "txtFilePath";
             this.txtFilePath.ReadOnly = true;
-            this.txtFilePath.Size = new System.Drawing.Size(244, 21);
+            this.txtFilePath.Size = new System.Drawing.Size(231, 21);
             this.txtFilePath.TabIndex = 21;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(7, 46);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 12);
-            this.label13.TabIndex = 23;
-            this.label13.Text = "下载进度";
             // 
             // label12
             // 
@@ -625,7 +616,7 @@
             this.gb_StatusCommand.Controls.Add(this.lstInfo);
             this.gb_StatusCommand.Location = new System.Drawing.Point(406, 85);
             this.gb_StatusCommand.Name = "gb_StatusCommand";
-            this.gb_StatusCommand.Size = new System.Drawing.Size(354, 431);
+            this.gb_StatusCommand.Size = new System.Drawing.Size(354, 401);
             this.gb_StatusCommand.TabIndex = 22;
             this.gb_StatusCommand.TabStop = false;
             this.gb_StatusCommand.Text = "状态信息";
@@ -636,7 +627,7 @@
             this.lstInfo.ItemHeight = 12;
             this.lstInfo.Location = new System.Drawing.Point(6, 14);
             this.lstInfo.Name = "lstInfo";
-            this.lstInfo.Size = new System.Drawing.Size(342, 412);
+            this.lstInfo.Size = new System.Drawing.Size(342, 376);
             this.lstInfo.TabIndex = 9;
             // 
             // statusStrip1
@@ -644,8 +635,9 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslblSN,
             this.tslblBatt,
-            this.tslblResolution});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 527);
+            this.tslblResolution,
+            this.tsPbar});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 492);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(776, 22);
             this.statusStrip1.TabIndex = 23;
@@ -679,22 +671,14 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "自动复制文件设置";
             // 
-            // chkSetCopy
+            // label10
             // 
-            this.chkSetCopy.AutoSize = true;
-            this.chkSetCopy.Location = new System.Drawing.Point(11, 21);
-            this.chkSetCopy.Name = "chkSetCopy";
-            this.chkSetCopy.Size = new System.Drawing.Size(72, 16);
-            this.chkSetCopy.TabIndex = 0;
-            this.chkSetCopy.Text = "自动复制";
-            this.chkSetCopy.UseVisualStyleBackColor = true;
-            // 
-            // txtCopyFileDestPath
-            // 
-            this.txtCopyFileDestPath.Location = new System.Drawing.Point(141, 19);
-            this.txtCopyFileDestPath.Name = "txtCopyFileDestPath";
-            this.txtCopyFileDestPath.Size = new System.Drawing.Size(169, 21);
-            this.txtCopyFileDestPath.TabIndex = 1;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(84, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 12);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "目标地址";
             // 
             // btnOpenFolder
             // 
@@ -706,31 +690,37 @@
             this.btnOpenFolder.UseVisualStyleBackColor = true;
             this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
             // 
-            // label10
+            // txtCopyFileDestPath
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(84, 22);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 12);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "目标地址";
+            this.txtCopyFileDestPath.Location = new System.Drawing.Point(141, 19);
+            this.txtCopyFileDestPath.Name = "txtCopyFileDestPath";
+            this.txtCopyFileDestPath.Size = new System.Drawing.Size(169, 21);
+            this.txtCopyFileDestPath.TabIndex = 1;
+            this.txtCopyFileDestPath.TextChanged += new System.EventHandler(this.txtCopyFileDestPath_TextChanged);
             // 
-            // btnCopyFile
+            // chkSetCopy
             // 
-            this.btnCopyFile.Location = new System.Drawing.Point(210, 13);
-            this.btnCopyFile.Name = "btnCopyFile";
-            this.btnCopyFile.Size = new System.Drawing.Size(103, 30);
-            this.btnCopyFile.TabIndex = 17;
-            this.btnCopyFile.Text = "复制执法仪文件";
-            this.btnCopyFile.UseVisualStyleBackColor = true;
-            this.btnCopyFile.Click += new System.EventHandler(this.btnCopyFile_Click);
+            this.chkSetCopy.AutoSize = true;
+            this.chkSetCopy.Location = new System.Drawing.Point(11, 21);
+            this.chkSetCopy.Name = "chkSetCopy";
+            this.chkSetCopy.Size = new System.Drawing.Size(72, 16);
+            this.chkSetCopy.TabIndex = 0;
+            this.chkSetCopy.Text = "自动复制";
+            this.chkSetCopy.UseVisualStyleBackColor = true;
+            this.chkSetCopy.CheckedChanged += new System.EventHandler(this.chkSetCopy_CheckedChanged);
+            // 
+            // tsPbar
+            // 
+            this.tsPbar.Name = "tsPbar";
+            this.tsPbar.Size = new System.Drawing.Size(450, 16);
+            this.tsPbar.Visible = false;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(776, 549);
+            this.ClientSize = new System.Drawing.Size(776, 514);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.gb_StatusCommand);
@@ -789,10 +779,8 @@
         private System.Windows.Forms.Button btn_SetMSDC;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnUpdataFile;
-        private System.Windows.Forms.ProgressBar pbarUpdate;
         private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.TextBox txtFilePath;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnReadDeviceInfo;
@@ -833,5 +821,6 @@
         private System.Windows.Forms.TextBox txtCopyFileDestPath;
         private System.Windows.Forms.CheckBox chkSetCopy;
         private System.Windows.Forms.Button btnCopyFile;
+        private System.Windows.Forms.ToolStripProgressBar tsPbar;
     }
 }

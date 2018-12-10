@@ -49,6 +49,9 @@ namespace AirlineBodyCamera
                 FileInfo fi = new FileInfo(log);
                 fi.Attributes = FileAttributes.Hidden;
                 SplashForm.StartSplash(log, Color.FromArgb(128, 128, 128));
+                p.CreateFolder();
+                p.CreateIni();
+                p.ReadIni();
                 // simulating operations at startup
                 System.Threading.Thread.Sleep(1000);
                 // close the splash screen

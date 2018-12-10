@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using SDK;
 using System.IO;
 using System.Threading;
+using Edward;
 
 namespace AirlineBodyCamera
 {
@@ -45,6 +46,15 @@ namespace AirlineBodyCamera
         public const int DBT_DEVNODES_CHANGED = 0x0007;
         public const int DBT_QUERYCHANGECONFIG = 0x0017;
         public const int DBT_USERDEFINED = 0xFFFF;
+
+
+
+        int totalSize; //Total Size 
+        int position; //Position 
+        const int BUFFER_SIZE = 4096;
+        byte[] buffer;
+        Stream stream;
+        string copyDestFile = string.Empty;
 
         /// <summary>
         /// 登陆的设备类型
@@ -108,7 +118,8 @@ namespace AirlineBodyCamera
             FileInfo fi = new FileInfo(txtFilePath.Text.Trim());
             string ToFile = string.Empty;
             ToFile = DestinFolder  + fi.Name;
-            CopyFile(txtFilePath .Text.Trim (), ToFile, 1024, pbarUpdate);//复制文件
+            CopyFile(txtFilePath .Text.Trim (), ToFile, 1024, tsPbar );//复制文件
+           // CopyFile(txtFilePath.Text.Trim(), ToFile, 1024, pbarUpdate);//复制文件
             thdAddFile.Abort();//关闭线程
         }
 
@@ -173,6 +184,75 @@ namespace AirlineBodyCamera
 
         }
 
+
+
+        /// <summary>
+        /// 文件的复制
+        /// </summary>
+        /// <param FormerFile="string">源文件路径</param>
+        /// <param toFile="string">目的文件路径</param> 
+        /// <param SectSize="int">传输大小</param> 
+        /// <param progressBar="ProgressBar">ProgressBar控件</param> 
+        public void CopyFile(string FormerFile, string toFile, int SectSize, ToolStripProgressBar tsPbar)
+        {
+            //progressBar1.Value = 0;//设置进度栏的当前位置为0
+            //progressBar1.Minimum = 0;//设置进度栏的最小值为0
+            tsPbar.Visible = true;
+            tsPbar.Value = 0;
+            tsPbar.Minimum = 0;
+            FileStream fileToCreate = new FileStream(toFile, FileMode.Create);//创建目的文件，如果已存在将被覆盖
+            fileToCreate.Close();//关闭所有资源
+            fileToCreate.Dispose();//释放所有资源
+            FileStream FormerOpen = new FileStream(FormerFile, FileMode.Open, FileAccess.Read);//以只读方式打开源文件
+            FileStream ToFileOpen = new FileStream(toFile, FileMode.Append, FileAccess.Write);//以写方式打开目的文件
+            int max = Convert.ToInt32(Math.Ceiling((double)FormerOpen.Length / (double)SectSize));//根据一次传输的大小，计算传输的个数
+          //  progressBar1.Maximum = max;//设置进度栏的最大值
+            tsPbar.Maximum = max;
+            int FileSize;//要拷贝的文件的大小
+            if (SectSize < FormerOpen.Length)//如果分段拷贝，即每次拷贝内容小于文件总长度
+            {
+                byte[] buffer = new byte[SectSize];//根据传输的大小，定义一个字节数组
+                int copied = 0;//记录传输的大小
+                int tem_n = 1;//设置进度栏中进度块的增加个数
+                while (copied <= ((int)FormerOpen.Length - SectSize))//拷贝主体部分
+                {
+                    Application.DoEvents();
+                    FileSize = FormerOpen.Read(buffer, 0, SectSize);//从0开始读，每次最大读SectSize
+                    FormerOpen.Flush();//清空缓存
+                    ToFileOpen.Write(buffer, 0, SectSize);//向目的文件写入字节
+                    ToFileOpen.Flush();//清空缓存
+                    ToFileOpen.Position = FormerOpen.Position;//使源文件和目的文件流的位置相同
+                    copied += FileSize;//记录已拷贝的大小
+                    //progressBar1.Value = progressBar1.Value + tem_n;//增加进度栏的进度块
+                    tsPbar.Value = tsPbar.Value + tem_n;
+                    
+                }
+                int left = (int)FormerOpen.Length - copied;//获取剩余大小
+                FileSize = FormerOpen.Read(buffer, 0, left);//读取剩余的字节
+                FormerOpen.Flush();//清空缓存
+                ToFileOpen.Write(buffer, 0, left);//写入剩余的部分
+                ToFileOpen.Flush();//清空缓存
+            }
+            else//如果整体拷贝，即每次拷贝内容大于文件总长度
+            {
+                byte[] buffer = new byte[FormerOpen.Length];//获取文件的大小
+                FormerOpen.Read(buffer, 0, (int)FormerOpen.Length);//读取源文件的字节
+                FormerOpen.Flush();//清空缓存
+                ToFileOpen.Write(buffer, 0, (int)FormerOpen.Length);//写放字节
+                ToFileOpen.Flush();//清空缓存
+            }
+            FormerOpen.Close();//释放所有资源
+            ToFileOpen.Close();//释放所有资源
+            updateMessage(lstInfo, "升级文件拷贝完成.");
+            // p.WriteLog("升级文件拷贝完成.");
+            updateMessage(lstInfo, "请拔掉USB数据线，静待系统自动升级.");
+            //  p.WriteLog("请拔掉USB数据线，静待系统自动升级.");
+          //  progressBar1.Value = 0;
+            tsPbar.Value = 0;
+            btnOpenFile.Enabled = true;
+            btnUpdataFile.Enabled = true;
+
+        }
 
 
 
@@ -299,6 +379,13 @@ namespace AirlineBodyCamera
             this.MinimizeBox = false;
             //私版
             this.Text = "执勤记录仪管理软件,Ver:" + Application.ProductVersion;
+
+            if (p.SetCopy == "1")
+                chkSetCopy.Checked = true;
+            if (p.SetCopy == "0")
+                chkSetCopy.Checked = false;
+
+            txtCopyFileDestPath.Text = p.CopyDestFolder;
 
             InitUI();
             bRestart = false;
@@ -458,7 +545,7 @@ namespace AirlineBodyCamera
 
             //this.cb_FileType.Enabled = false; 
 
-            this.pbarUpdate.Enabled = true;
+           
             //this.cb_FileType.Text = "FAT32";
 
 
@@ -761,6 +848,7 @@ namespace AirlineBodyCamera
             if (ofg.ShowDialog() == DialogResult.OK)//打开文件对话框
             {
                 txtFilePath.Text = ofg.FileName;//获取源文件的路径
+                FileInfo fi = new FileInfo(ofg.FileName);
             }
         }
 
@@ -908,7 +996,7 @@ namespace AirlineBodyCamera
             this.txtUserID.Enabled = false;
             this.txtUserName.Enabled = false;
             this.txtDevID.Enabled = false;
-            this.pbarUpdate.Enabled = false;
+
             this.btnUpdataFile.Enabled = false;
             txtFilePath.Text = string.Empty;
             btn_ChangePWd.Enabled = false;
@@ -991,10 +1079,16 @@ namespace AirlineBodyCamera
             open.Description = "请选择执法仪文件需要存在的位置";
             if (open.ShowDialog() == DialogResult.OK)
                 txtCopyFileDestPath.Text = open.SelectedPath;
+
         }
 
         private void btnCopyFile_Click(object sender, EventArgs e)
         {
+
+
+
+
+
             if (!string.IsNullOrEmpty (txtCopyFileDestPath.Text.Trim ()))
             {
 
@@ -1009,9 +1103,12 @@ namespace AirlineBodyCamera
                     //filesCount++;
                     //AddItem2ListView(lstViewFileInfoView, filesCount, item.FileExtension, item.FileName, "", item.FileDirectory);
                     updateMessage(lstInfo, item.FileName);
-                    File.Copy(item.FilePath, txtCopyFileDestPath.Text .Trim () + @"\" + item.FileName);
-
-
+                  //  File.Copy(item.FilePath, txtCopyFileDestPath.Text .Trim () + @"\" + item.FileName);
+                    copyDestFile = txtCopyFileDestPath.Text.Trim() + @"\" + item.FileName;
+                    tsPbar.Visible = true;
+                    thdAddFile = new Thread(new ThreadStart(SetAddFile));//创建一个线程
+                    //  thdAddFile.IsBackground = true;
+                    thdAddFile.Start();//执行当前线程
                        
 
                 }
@@ -1060,5 +1157,24 @@ namespace AirlineBodyCamera
                 return FileList;
             }
         }
+
+        private void chkSetCopy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSetCopy.Checked == true)
+                p.SetCopy = "1";
+            if (chkSetCopy.Checked == false)
+                p.SetCopy = "0";
+            IniFile.IniWriteValue("SysConfig", "SetCopy", p.SetCopy, p.IniPath);
+
+        }
+
+        private void txtCopyFileDestPath_TextChanged(object sender, EventArgs e)
+        {
+            p.CopyDestFolder = txtCopyFileDestPath.Text.Trim();
+            IniFile.IniWriteValue("SysConfig", "CopyDestFolder", p.CopyDestFolder, p.IniPath);
+
+        }
+
+
     }
 }
