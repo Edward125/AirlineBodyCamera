@@ -32,6 +32,8 @@ namespace AirlineBodyCamera
 
         DeviceType LoginDevice;
         bool bRestart = false;
+        bool bCheckDevice = false; //
+        bool bCopyFile = false;//是否正在copy文件,复制期间，不能关闭和重启
 
         public const int WM_DEVICECHANGE = 0x219;
         public const int DBT_DEVICEARRIVAL = 0x8000;
@@ -49,12 +51,12 @@ namespace AirlineBodyCamera
 
 
 
-        int totalSize; //Total Size 
-        int position; //Position 
-        const int BUFFER_SIZE = 4096;
-        byte[] buffer;
-        Stream stream;
-        string copyDestFile = string.Empty;
+        //int totalSize; //Total Size 
+        //int position; //Position 
+        //const int BUFFER_SIZE = 4096;
+        //byte[] buffer;
+        //Stream stream;
+       // string copyDestFile = string.Empty;
 
         /// <summary>
         /// 登陆的设备类型
@@ -198,6 +200,9 @@ namespace AirlineBodyCamera
         /// <param progressBar="ProgressBar">ProgressBar控件</param> 
         public void CopyFile(string FormerFile, string toFile, int SectSize, ToolStripProgressBar tsPbar)
         {
+            btnCopyFile.Enabled = false;
+            bCopyFile = true;
+            btnUpdataFile.Enabled = false;
             //progressBar1.Value = 0;//设置进度栏的当前位置为0
             //progressBar1.Minimum = 0;//设置进度栏的最小值为0
             tsPbar.Visible = true;
@@ -254,6 +259,9 @@ namespace AirlineBodyCamera
             tsPbar.Value = 0;
             btnOpenFile.Enabled = true;
             btnUpdataFile.Enabled = true;
+            bCopyFile = false;
+            btnUpdataFile.Enabled = true;
+            btnCopyFile.Enabled = true;
 
         }
 
@@ -271,7 +279,7 @@ namespace AirlineBodyCamera
             //progressBar1.Value = 0;//设置进度栏的当前位置为0
             //progressBar1.Minimum = 0;//设置进度栏的最小值为0
             FileInfo fi = new FileInfo(FormerFile);
-            updateMessage(lstInfo, "正在复制文件:" + fi.Name);
+            updateMessage(lstInfo, "正在复制:" + fi.Name);
             tsPbar.Visible = true;
             tsPbar.Value = 0;
             tsPbar.Minimum = 0;
@@ -318,7 +326,7 @@ namespace AirlineBodyCamera
             }
             FormerOpen.Close();//释放所有资源
             ToFileOpen.Close();//释放所有资源
-            updateMessage(lstInfo, "该文件copy完成.");
+           // updateMessage(lstInfo, "该文件copy完成.");
             // p.WriteLog("升级文件拷贝完成.");
             //updateMessage(lstInfo, "请拔掉USB数据线，静待系统自动升级.");
             //  p.WriteLog("请拔掉USB数据线，静待系统自动升级.");
@@ -363,18 +371,25 @@ namespace AirlineBodyCamera
                         case WM_DEVICECHANGE:
                             break;
                         case DBT_DEVICEARRIVAL://U盘插入
-                            DriveInfo[] s = DriveInfo.GetDrives();
-                            foreach (DriveInfo drive in s)
-                            {
-                                if (drive.DriveType == DriveType.Removable)
-                                {
 
-                                    updateMessage(lstInfo, "U盘已插入，盘符为:" + drive.Name.ToString());
-          
-                                   /// Thread.Sleep(1000);
-                                    DestinFolder = drive.Name.ToString();
-     
-                                    break;
+                            if (bCheckDevice)
+                            {
+                                DriveInfo[] s = DriveInfo.GetDrives();
+                                foreach (DriveInfo drive in s)
+                                {
+                                    if (drive.DriveType == DriveType.Removable)
+                                    {
+                                        updateMessage(lstInfo, "U盘已插入，盘符为:" + drive.Name.ToString());
+                                        /// Thread.Sleep(1000);
+                                        DestinFolder = drive.Name.ToString();
+                                        btnCopyFile.Enabled = true;
+                                        this.btnEjectSD.Enabled = true;
+                                        if (chkSetCopy.Enabled)
+                                            AutoCopyBodyFile();
+
+
+                                        break;
+                                    }
                                 }
                             }
                             break;
@@ -389,7 +404,10 @@ namespace AirlineBodyCamera
                         case DBT_DEVICEQUERYREMOVEFAILED:
                             break;
                         case DBT_DEVICEREMOVECOMPLETE: //U盘卸载
-                            updateMessage(lstInfo, "U盘已卸载！");
+                            if (bCheckDevice)
+                            {
+                                updateMessage(lstInfo, "U盘已卸载！");
+                            }
                             break;
                         case DBT_DEVICEREMOVEPENDING:
                             break;
@@ -558,6 +576,8 @@ namespace AirlineBodyCamera
 
             //登陆成功
             LogonInitUI();
+            //
+            bCheckDevice = true;
 
             //同步时间
             if (SyncDeviceTime(LoginDevice, DevicePassword))
@@ -837,11 +857,11 @@ namespace AirlineBodyCamera
                 this.btn_SyncDevTime.Enabled = false;
                 this.btn_SetMSDC.Enabled = false;
                 Delay(500);
-                this.btnEjectSD.Enabled = true;
+
                 this.btnOpenFile.Enabled = true;
                 this.btnUpdataFile.Enabled = true;
                 txtFilePath.Enabled = true;
-                btnCopyFile.Enabled = true;
+
                 updateMessage(lstInfo, "执法仪已进入U盘模式.");
 
             }
@@ -1043,9 +1063,15 @@ namespace AirlineBodyCamera
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            if (LoginDevice == DeviceType.EasyStorage)
-            updateMessage(lstInfo, "退出登录成功");
-            InitUI();
+            if (!bCopyFile)
+            {
+                if (LoginDevice == DeviceType.EasyStorage)
+                    updateMessage(lstInfo, "退出登录成功");
+                bCheckDevice = false;
+                InitUI();
+                bCheckDevice = false;
+
+            }
         }
 
         //UI初始化设置
@@ -1088,30 +1114,41 @@ namespace AirlineBodyCamera
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (bRestart)
-            {
-
-            }
+            if (bCopyFile)
+                e.Cancel = true;
             else
             {
-                DialogResult dr = MessageBox.Show("是否确认退出软件,退出点击是(Y),不退出点击否(N)?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == DialogResult.Yes)
+
+
+                if (bRestart)
                 {
-                    Environment.Exit(0);
+
                 }
                 else
-                    e.Cancel = true;
+                {
+                    DialogResult dr = MessageBox.Show("是否确认退出软件,退出点击是(Y),不退出点击否(N)?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dr == DialogResult.Yes)
+                    {
+                        Environment.Exit(0);
+                    }
+                    else
+                        e.Cancel = true;
+                }
             }
         }
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("是否确认重启软件,退出点击是(Y),不退出点击否(N)?", "Restart?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dr == DialogResult.Yes)
-            {
-                bRestart = true;
-                Application.Restart();
 
+            if (!bCopyFile)
+            {
+                DialogResult dr = MessageBox.Show("是否确认重启软件,退出点击是(Y),不退出点击否(N)?", "Restart?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    bRestart = true;
+                    Application.Restart();
+
+                }
             }
         }
 
@@ -1127,7 +1164,6 @@ namespace AirlineBodyCamera
         {
             if (DestinFolder != "" && Directory.Exists (DestinFolder ))
             {
-
                 System.Diagnostics.Process.Start(@DestinFolder);
             }
             else
@@ -1167,45 +1203,52 @@ namespace AirlineBodyCamera
         private void btnCopyFile_Click(object sender, EventArgs e)
         {
 
+            AutoCopyBodyFile();
 
 
 
+        }
 
-            if (!string.IsNullOrEmpty (txtCopyFileDestPath.Text.Trim ()))
+        private void AutoCopyBodyFile()
+        {
+            grbUpdateFile.Enabled = false;
+            bCopyFile = true;
+            btnOpenFolder.Enabled = false;
+            if (!string.IsNullOrEmpty(txtCopyFileDestPath.Text.Trim()))
             {
-
-                DirectoryInfo di = new DirectoryInfo(DestinFolder +@"DCIM");
+                DirectoryInfo di = new DirectoryInfo(DestinFolder + @"DCIM");
                 List<FileInformation> list = new List<FileInformation>();
                 list = DirectoryAllFiles.GetAllFiles(new System.IO.DirectoryInfo(DestinFolder + @"DCIM"));
+                btnCopyFile.Enabled = false;
+
 
                 foreach (var item in list)
                 {
-                    //if (!chklstExtension.Items.Contains(item.FileExtension.ToLower())) //不存在,添加
-                    //    chklstExtension.Items.Add(item.FileExtension.ToLower());
-                    //filesCount++;
-                    //AddItem2ListView(lstViewFileInfoView, filesCount, item.FileExtension, item.FileName, "", item.FileDirectory);
-                  //  updateMessage(lstInfo, item.FileName);
-                  ////  File.Copy(item.FilePath, txtCopyFileDestPath.Text .Trim () + @"\" + item.FileName);
-                  //  copyDestFile = txtCopyFileDestPath.Text.Trim() + @"\" + item.FileName;
-                  //  tsPbar.Visible = true;
-                  //  thdAddFile = new Thread(new ThreadStart(SetAddFile));//创建一个线程
-                  //  //  thdAddFile.IsBackground = true;
-                  //  thdAddFile.Start();//执行当前线程
 
                     this.Invoke((EventHandler)delegate
                     {
                         CopyDestFile(item.FilePath, txtCopyFileDestPath.Text.Trim() + @"\" + item.FileName, 4096, tsPbar);
                     });
 
-                       
-
+                }
+                btnCopyFile.Enabled = true;
+                btnUpdataFile.Enabled = true;
+                updateMessage(lstInfo, "复制执勤仪文件完毕.");
+            }
+            else
+            {
+                if (Directory.Exists(txtCopyFileDestPath.Text.Trim()))
+                {
+                    updateMessage(lstInfo, "存储执勤仪文件的文件夹不存在,请重新选择.");
+                    txtCopyFileDestPath.Focus();
+                    txtCopyFileDestPath.Focus();
                 }
 
-
             }
+            btnOpenFolder.Enabled = true;
+            bCopyFile = true;
+            grbUpdateFile.Enabled = true;
         }
-
-
 
 
         /// <summary>

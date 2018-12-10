@@ -45,7 +45,7 @@
             this.btnEjectSD = new System.Windows.Forms.Button();
             this.btn_SyncDevTime = new System.Windows.Forms.Button();
             this.btn_SetMSDC = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.grbUpdateFile = new System.Windows.Forms.GroupBox();
             this.btnUpdataFile = new System.Windows.Forms.Button();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.txtFilePath = new System.Windows.Forms.TextBox();
@@ -83,16 +83,16 @@
             this.tslblSN = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslblBatt = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslblResolution = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsPbar = new System.Windows.Forms.ToolStripProgressBar();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnOpenFolder = new System.Windows.Forms.Button();
             this.txtCopyFileDestPath = new System.Windows.Forms.TextBox();
             this.chkSetCopy = new System.Windows.Forms.CheckBox();
-            this.tsPbar = new System.Windows.Forms.ToolStripProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grbChangePassword.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.grbUpdateFile.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -104,9 +104,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(50, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(92, 19);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(212, 57);
+            this.pictureBox1.Size = new System.Drawing.Size(218, 57);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -116,7 +116,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(269, 17);
+            this.label1.Location = new System.Drawing.Point(317, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(459, 62);
             this.label1.TabIndex = 1;
@@ -274,19 +274,19 @@
             this.btn_SetMSDC.UseVisualStyleBackColor = true;
             this.btn_SetMSDC.Click += new System.EventHandler(this.btn_SetMSDC_Click);
             // 
-            // groupBox5
+            // grbUpdateFile
             // 
-            this.groupBox5.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox5.Controls.Add(this.btnUpdataFile);
-            this.groupBox5.Controls.Add(this.btnOpenFile);
-            this.groupBox5.Controls.Add(this.txtFilePath);
-            this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Location = new System.Drawing.Point(9, 439);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(386, 47);
-            this.groupBox5.TabIndex = 20;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "系统升级";
+            this.grbUpdateFile.BackColor = System.Drawing.Color.Transparent;
+            this.grbUpdateFile.Controls.Add(this.btnUpdataFile);
+            this.grbUpdateFile.Controls.Add(this.btnOpenFile);
+            this.grbUpdateFile.Controls.Add(this.txtFilePath);
+            this.grbUpdateFile.Controls.Add(this.label12);
+            this.grbUpdateFile.Location = new System.Drawing.Point(9, 439);
+            this.grbUpdateFile.Name = "grbUpdateFile";
+            this.grbUpdateFile.Size = new System.Drawing.Size(386, 47);
+            this.grbUpdateFile.TabIndex = 20;
+            this.grbUpdateFile.TabStop = false;
+            this.grbUpdateFile.Text = "系统升级";
             // 
             // btnUpdataFile
             // 
@@ -658,6 +658,12 @@
             this.tslblResolution.Name = "tslblResolution";
             this.tslblResolution.Size = new System.Drawing.Size(0, 17);
             // 
+            // tsPbar
+            // 
+            this.tsPbar.Name = "tsPbar";
+            this.tsPbar.Size = new System.Drawing.Size(520, 16);
+            this.tsPbar.Visible = false;
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label10);
@@ -709,12 +715,6 @@
             this.chkSetCopy.UseVisualStyleBackColor = true;
             this.chkSetCopy.CheckedChanged += new System.EventHandler(this.chkSetCopy_CheckedChanged);
             // 
-            // tsPbar
-            // 
-            this.tsPbar.Name = "tsPbar";
-            this.tsPbar.Size = new System.Drawing.Size(520, 16);
-            this.tsPbar.Visible = false;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -726,7 +726,7 @@
             this.Controls.Add(this.gb_StatusCommand);
             this.Controls.Add(this.grbChangePassword);
             this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.grbUpdateFile);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -742,8 +742,8 @@
             this.grbChangePassword.ResumeLayout(false);
             this.grbChangePassword.PerformLayout();
             this.groupBox6.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.grbUpdateFile.ResumeLayout(false);
+            this.grbUpdateFile.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -777,7 +777,7 @@
         private System.Windows.Forms.Button btnEjectSD;
         private System.Windows.Forms.Button btn_SyncDevTime;
         private System.Windows.Forms.Button btn_SetMSDC;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox grbUpdateFile;
         private System.Windows.Forms.Button btnUpdataFile;
         private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.TextBox txtFilePath;
