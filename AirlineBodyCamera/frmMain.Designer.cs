@@ -169,7 +169,7 @@
             // 
             // btnChangePwdOK
             // 
-            this.btnChangePwdOK.Location = new System.Drawing.Point(317, 17);
+            this.btnChangePwdOK.Location = new System.Drawing.Point(321, 17);
             this.btnChangePwdOK.Name = "btnChangePwdOK";
             this.btnChangePwdOK.Size = new System.Drawing.Size(61, 30);
             this.btnChangePwdOK.TabIndex = 20;
@@ -616,7 +616,7 @@
             this.gb_StatusCommand.Controls.Add(this.lstInfo);
             this.gb_StatusCommand.Location = new System.Drawing.Point(406, 85);
             this.gb_StatusCommand.Name = "gb_StatusCommand";
-            this.gb_StatusCommand.Size = new System.Drawing.Size(354, 401);
+            this.gb_StatusCommand.Size = new System.Drawing.Size(458, 401);
             this.gb_StatusCommand.TabIndex = 22;
             this.gb_StatusCommand.TabStop = false;
             this.gb_StatusCommand.Text = "状态信息";
@@ -627,7 +627,7 @@
             this.lstInfo.ItemHeight = 12;
             this.lstInfo.Location = new System.Drawing.Point(6, 14);
             this.lstInfo.Name = "lstInfo";
-            this.lstInfo.Size = new System.Drawing.Size(342, 376);
+            this.lstInfo.Size = new System.Drawing.Size(445, 376);
             this.lstInfo.TabIndex = 9;
             // 
             // statusStrip1
@@ -639,7 +639,7 @@
             this.tsPbar});
             this.statusStrip1.Location = new System.Drawing.Point(0, 492);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(776, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(870, 22);
             this.statusStrip1.TabIndex = 23;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -682,9 +682,9 @@
             // 
             // btnOpenFolder
             // 
-            this.btnOpenFolder.Location = new System.Drawing.Point(316, 13);
+            this.btnOpenFolder.Location = new System.Drawing.Point(342, 13);
             this.btnOpenFolder.Name = "btnOpenFolder";
-            this.btnOpenFolder.Size = new System.Drawing.Size(63, 30);
+            this.btnOpenFolder.Size = new System.Drawing.Size(40, 30);
             this.btnOpenFolder.TabIndex = 26;
             this.btnOpenFolder.Text = "选择";
             this.btnOpenFolder.UseVisualStyleBackColor = true;
@@ -692,9 +692,9 @@
             // 
             // txtCopyFileDestPath
             // 
-            this.txtCopyFileDestPath.Location = new System.Drawing.Point(141, 19);
+            this.txtCopyFileDestPath.Location = new System.Drawing.Point(141, 17);
             this.txtCopyFileDestPath.Name = "txtCopyFileDestPath";
-            this.txtCopyFileDestPath.Size = new System.Drawing.Size(169, 21);
+            this.txtCopyFileDestPath.Size = new System.Drawing.Size(198, 21);
             this.txtCopyFileDestPath.TabIndex = 1;
             this.txtCopyFileDestPath.TextChanged += new System.EventHandler(this.txtCopyFileDestPath_TextChanged);
             // 
@@ -712,7 +712,7 @@
             // tsPbar
             // 
             this.tsPbar.Name = "tsPbar";
-            this.tsPbar.Size = new System.Drawing.Size(450, 16);
+            this.tsPbar.Size = new System.Drawing.Size(520, 16);
             this.tsPbar.Visible = false;
             // 
             // frmMain
@@ -720,7 +720,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(776, 514);
+            this.ClientSize = new System.Drawing.Size(870, 514);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.gb_StatusCommand);
