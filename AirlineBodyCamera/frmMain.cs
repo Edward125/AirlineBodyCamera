@@ -262,6 +262,7 @@ namespace AirlineBodyCamera
             bCopyFile = false;
             btnUpdataFile.Enabled = true;
             btnCopyFile.Enabled = true;
+            tsPbar.Visible = false;
 
         }
 
@@ -482,6 +483,7 @@ namespace AirlineBodyCamera
 
             txtCopyFileDestPath.Text = p.CopyDestFolder;
             txtCopyFileDestPath.Select(this.txtCopyFileDestPath.TextLength, 0);//光标定位到文本最后
+            txtFilePath.Text = p.UpdateFile;
 
             InitUI();
             bRestart = false;
@@ -1245,6 +1247,7 @@ namespace AirlineBodyCamera
                 }
 
             }
+            tsPbar.Visible = false;
             btnOpenFolder.Enabled = true;
             bCopyFile = true;
             grbUpdateFile.Enabled = true;
@@ -1308,6 +1311,12 @@ namespace AirlineBodyCamera
             p.CopyDestFolder = txtCopyFileDestPath.Text.Trim();
             IniFile.IniWriteValue("SysConfig", "CopyDestFolder", p.CopyDestFolder, p.IniPath);
 
+        }
+
+        private void txtFilePath_TextChanged(object sender, EventArgs e)
+        {
+            p.UpdateFile = txtFilePath.Text.Trim();
+            IniFile.IniWriteValue("SysConfig", "UpdateFile", p.UpdateFile, p.IniPath);
         }
 
 

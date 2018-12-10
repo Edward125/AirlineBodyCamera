@@ -11,7 +11,8 @@ namespace AirlineBodyCamera
     {
 
         public static string AppFolder = Environment.CurrentDirectory + @"\执勤记录仪";
-        public static string IniPath = AppFolder + @"\SysConfig";
+        public static string IniPath = AppFolder + @"\SysConfig.ini";
+        public static string UpdateFile = string.Empty;
         //
         public static string SetCopy = "0";
         public static string CopyDestFolder = "";
@@ -40,6 +41,7 @@ namespace AirlineBodyCamera
                 IniFile.CreateIniFile(IniPath);
                 IniFile.IniWriteValue("SysConfig", "SetCopy", SetCopy);
                 IniFile.IniWriteValue("SysConfig", "CopyDestFolder", CopyDestFolder);
+                IniFile.IniWriteValue("SysConfig", "UpdateFile", UpdateFile);
             }
         }
 
@@ -50,6 +52,7 @@ namespace AirlineBodyCamera
             {
                 SetCopy = IniFile.IniReadValue("SysConfig", "SetCopy");
                 CopyDestFolder = IniFile.IniReadValue("SysConfig", "CopyDestFolder");
+                UpdateFile = IniFile.IniReadValue("SysConfig", "UpdateFile");
             }
         }
 

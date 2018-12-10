@@ -315,6 +315,7 @@
             this.txtFilePath.ReadOnly = true;
             this.txtFilePath.Size = new System.Drawing.Size(231, 21);
             this.txtFilePath.TabIndex = 21;
+            this.txtFilePath.TextChanged += new System.EventHandler(this.txtFilePath_TextChanged);
             // 
             // label12
             // 
