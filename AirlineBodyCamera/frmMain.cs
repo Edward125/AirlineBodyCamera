@@ -1250,7 +1250,7 @@ namespace AirlineBodyCamera
             }
             tsPbar.Visible = false;
             btnOpenFolder.Enabled = true;
-            bCopyFile = true;
+            bCopyFile = false;
             grbUpdateFile.Enabled = true;
         }
 
