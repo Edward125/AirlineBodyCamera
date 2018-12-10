@@ -487,7 +487,8 @@ namespace AirlineBodyCamera
 
             InitUI();
             bRestart = false;
-            Control.CheckForIllegalCrossThreadCalls = false;
+           // Control.CheckForIllegalCrossThreadCalls = false;
+            this.TopMost = true;
         }
         private void frmMain_Load(object sender, EventArgs e)
         {

@@ -45,6 +45,13 @@ namespace AirlineBodyCamera
             if (instance == null)
             {
 
+
+
+
+
+
+                Bitmap  file =(Bitmap ) Properties.Resources.ResourceManager.GetObject("eu");
+                file.Save(@".\eu.png");
                 string log = @".\eu.png";
                 FileInfo fi = new FileInfo(log);
                 fi.Attributes = FileAttributes.Hidden;
@@ -52,6 +59,18 @@ namespace AirlineBodyCamera
                 p.CreateFolder();
                 p.CreateIni();
                 p.ReadIni();
+
+
+                if (!File.Exists(@".\zfyMC.dll"))
+                {
+                    if (!downloadDll())
+                    {
+                        System.Threading.Thread.Sleep(1000);
+                        SplashForm.CloseSplash();
+                        Environment.Exit(0);
+                    }
+                }
+
                 // simulating operations at startup
                 System.Threading.Thread.Sleep(1000);
                 // close the splash screen
@@ -96,5 +115,31 @@ namespace AirlineBodyCamera
             SetForegroundWindow(instance.MainWindowHandle);            //放到前端
         }
 
+
+
+        private static bool downloadDll()
+        {
+            string filePath = @".\zyfMC.dll";
+
+            if (!File.Exists(filePath))
+            {
+                byte[] template = Properties.Resources.zfyMC;
+                FileStream stream = new FileStream(filePath, FileMode.Create);
+                try
+                {
+                    stream.Write(template, 0, template.Length);
+                    stream.Close();
+                    stream.Dispose();
+                    //  File.SetAttributes(filePath, FileAttributes.Hidden);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+
+            }
+            return true;
+        }
     }
 }
