@@ -119,7 +119,7 @@ namespace AirlineBodyCamera
 
         private static bool downloadDll()
         {
-            string filePath = @".\zyfMC.dll";
+            string filePath = @".\zfyMC.dll";
 
             if (!File.Exists(filePath))
             {
