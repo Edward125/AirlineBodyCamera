@@ -219,7 +219,7 @@
             this.btnCopyFile.Name = "btnCopyFile";
             this.btnCopyFile.Size = new System.Drawing.Size(103, 30);
             this.btnCopyFile.TabIndex = 17;
-            this.btnCopyFile.Text = "复制执法仪文件";
+            this.btnCopyFile.Text = "复制执勤仪文件";
             this.btnCopyFile.UseVisualStyleBackColor = true;
             this.btnCopyFile.Click += new System.EventHandler(this.btnCopyFile_Click);
             // 
