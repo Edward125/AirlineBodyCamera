@@ -9,3 +9,4 @@ E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\obj\Debug\AirlineBodyCamera.p
 E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\bin\Debug\eu.png
 E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\bin\Debug\CSkin.dll
 E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\bin\Debug\CSkin.xml
+E:\Edward\Code\AirlineBodyCamera\AirlineBodyCamera\obj\Debug\AirlineBodyCamera.csprojResolveAssemblyReference.cache

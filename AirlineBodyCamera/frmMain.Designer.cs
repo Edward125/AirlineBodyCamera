@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grbChangePassword = new System.Windows.Forms.GroupBox();
@@ -91,6 +92,15 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.skinGroupBox1 = new CCWin.SkinControl.SkinGroupBox();
             this.skinListBox1 = new CCWin.SkinControl.SkinListBox();
+            this.skinGroupBox2 = new CCWin.SkinControl.SkinGroupBox();
+            this.skinLabel1 = new CCWin.SkinControl.SkinLabel();
+            this.skinLabel2 = new CCWin.SkinControl.SkinLabel();
+            this.scomboUserID = new CCWin.SkinControl.SkinComboBox();
+            this.skinButton1 = new CCWin.SkinControl.SkinButton();
+            this.skinButton2 = new CCWin.SkinControl.SkinButton();
+            this.skinButton3 = new CCWin.SkinControl.SkinButton();
+            this.skinButton4 = new CCWin.SkinControl.SkinButton();
+            this.stb_Password = new CCWin.SkinControl.SkinTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grbChangePassword.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -103,6 +113,7 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.skinGroupBox1.SuspendLayout();
+            this.skinGroupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -512,7 +523,7 @@
             this.groupBox1.Controls.Add(this.btnLogon);
             this.groupBox1.Controls.Add(this.tb_Password);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 103);
+            this.groupBox1.Location = new System.Drawing.Point(197, 559);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(270, 80);
             this.groupBox1.TabIndex = 17;
@@ -631,9 +642,9 @@
             this.tslblBatt,
             this.tslblResolution,
             this.tsPbar});
-            this.statusStrip1.Location = new System.Drawing.Point(4, 509);
+            this.statusStrip1.Location = new System.Drawing.Point(4, 686);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(880, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(869, 22);
             this.statusStrip1.TabIndex = 23;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -725,7 +736,7 @@
             this.skinGroupBox1.BorderColor = System.Drawing.Color.Red;
             this.skinGroupBox1.Controls.Add(this.skinListBox1);
             this.skinGroupBox1.ForeColor = System.Drawing.Color.Blue;
-            this.skinGroupBox1.Location = new System.Drawing.Point(415, 105);
+            this.skinGroupBox1.Location = new System.Drawing.Point(407, 105);
             this.skinGroupBox1.Name = "skinGroupBox1";
             this.skinGroupBox1.RectBackColor = System.Drawing.Color.White;
             this.skinGroupBox1.RoundStyle = CCWin.SkinClass.RoundStyle.All;
@@ -747,12 +758,175 @@
             this.skinListBox1.Size = new System.Drawing.Size(446, 368);
             this.skinListBox1.TabIndex = 0;
             // 
+            // skinGroupBox2
+            // 
+            this.skinGroupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.skinGroupBox2.BorderColor = System.Drawing.Color.Red;
+            this.skinGroupBox2.Controls.Add(this.stb_Password);
+            this.skinGroupBox2.Controls.Add(this.skinButton4);
+            this.skinGroupBox2.Controls.Add(this.skinButton3);
+            this.skinGroupBox2.Controls.Add(this.skinButton2);
+            this.skinGroupBox2.Controls.Add(this.skinButton1);
+            this.skinGroupBox2.Controls.Add(this.scomboUserID);
+            this.skinGroupBox2.Controls.Add(this.skinLabel2);
+            this.skinGroupBox2.Controls.Add(this.skinLabel1);
+            this.skinGroupBox2.ForeColor = System.Drawing.Color.Blue;
+            this.skinGroupBox2.Location = new System.Drawing.Point(11, 100);
+            this.skinGroupBox2.Name = "skinGroupBox2";
+            this.skinGroupBox2.RectBackColor = System.Drawing.Color.White;
+            this.skinGroupBox2.RoundStyle = CCWin.SkinClass.RoundStyle.All;
+            this.skinGroupBox2.Size = new System.Drawing.Size(270, 71);
+            this.skinGroupBox2.TabIndex = 27;
+            this.skinGroupBox2.TabStop = false;
+            this.skinGroupBox2.Text = "登录信息";
+            this.skinGroupBox2.TitleBorderColor = System.Drawing.Color.Red;
+            this.skinGroupBox2.TitleRectBackColor = System.Drawing.Color.White;
+            this.skinGroupBox2.TitleRoundStyle = CCWin.SkinClass.RoundStyle.All;
+            // 
+            // skinLabel1
+            // 
+            this.skinLabel1.AutoSize = true;
+            this.skinLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel1.BorderColor = System.Drawing.Color.White;
+            this.skinLabel1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel1.Location = new System.Drawing.Point(6, 17);
+            this.skinLabel1.Name = "skinLabel1";
+            this.skinLabel1.Size = new System.Drawing.Size(56, 17);
+            this.skinLabel1.TabIndex = 28;
+            this.skinLabel1.Text = "账号类型";
+            // 
+            // skinLabel2
+            // 
+            this.skinLabel2.AutoSize = true;
+            this.skinLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel2.BorderColor = System.Drawing.Color.White;
+            this.skinLabel2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel2.Location = new System.Drawing.Point(6, 44);
+            this.skinLabel2.Name = "skinLabel2";
+            this.skinLabel2.Size = new System.Drawing.Size(56, 17);
+            this.skinLabel2.TabIndex = 29;
+            this.skinLabel2.Text = "登录密码";
+            // 
+            // scomboUserID
+            // 
+            this.scomboUserID.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.scomboUserID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.scomboUserID.FormattingEnabled = true;
+            this.scomboUserID.Items.AddRange(new object[] {
+            "管理员",
+            "一般用户"});
+            this.scomboUserID.Location = new System.Drawing.Point(60, 15);
+            this.scomboUserID.Name = "scomboUserID";
+            this.scomboUserID.Size = new System.Drawing.Size(73, 22);
+            this.scomboUserID.TabIndex = 28;
+            this.scomboUserID.WaterText = "";
+            // 
+            // skinButton1
+            // 
+            this.skinButton1.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton1.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton1.DownBack = null;
+            this.skinButton1.Location = new System.Drawing.Point(135, 14);
+            this.skinButton1.MouseBack = null;
+            this.skinButton1.Name = "skinButton1";
+            this.skinButton1.NormlBack = null;
+            this.skinButton1.Size = new System.Drawing.Size(65, 23);
+            this.skinButton1.TabIndex = 1;
+            this.skinButton1.Text = "检查设备";
+            this.skinButton1.UseVisualStyleBackColor = false;
+            // 
+            // skinButton2
+            // 
+            this.skinButton2.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton2.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton2.DownBack = null;
+            this.skinButton2.Location = new System.Drawing.Point(135, 40);
+            this.skinButton2.MouseBack = null;
+            this.skinButton2.Name = "skinButton2";
+            this.skinButton2.NormlBack = null;
+            this.skinButton2.Size = new System.Drawing.Size(65, 23);
+            this.skinButton2.TabIndex = 30;
+            this.skinButton2.Text = "登录";
+            this.skinButton2.UseVisualStyleBackColor = false;
+            // 
+            // skinButton3
+            // 
+            this.skinButton3.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton3.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton3.DownBack = null;
+            this.skinButton3.Location = new System.Drawing.Point(201, 13);
+            this.skinButton3.MouseBack = null;
+            this.skinButton3.Name = "skinButton3";
+            this.skinButton3.NormlBack = null;
+            this.skinButton3.Size = new System.Drawing.Size(65, 23);
+            this.skinButton3.TabIndex = 31;
+            this.skinButton3.Text = "重启软件";
+            this.skinButton3.UseVisualStyleBackColor = false;
+            // 
+            // skinButton4
+            // 
+            this.skinButton4.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton4.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton4.DownBack = null;
+            this.skinButton4.Location = new System.Drawing.Point(202, 40);
+            this.skinButton4.MouseBack = null;
+            this.skinButton4.Name = "skinButton4";
+            this.skinButton4.NormlBack = null;
+            this.skinButton4.Size = new System.Drawing.Size(65, 23);
+            this.skinButton4.TabIndex = 32;
+            this.skinButton4.Text = "退出";
+            this.skinButton4.UseVisualStyleBackColor = false;
+            // 
+            // stb_Password
+            // 
+            this.stb_Password.BackColor = System.Drawing.Color.Transparent;
+            this.stb_Password.DownBack = null;
+            this.stb_Password.Icon = null;
+            this.stb_Password.IconIsButton = false;
+            this.stb_Password.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.stb_Password.IsPasswordChat = '*';
+            this.stb_Password.IsSystemPasswordChar = false;
+            this.stb_Password.Lines = new string[0];
+            this.stb_Password.Location = new System.Drawing.Point(60, 40);
+            this.stb_Password.Margin = new System.Windows.Forms.Padding(0);
+            this.stb_Password.MaxLength = 32767;
+            this.stb_Password.MinimumSize = new System.Drawing.Size(28, 28);
+            this.stb_Password.MouseBack = null;
+            this.stb_Password.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.stb_Password.Multiline = false;
+            this.stb_Password.Name = "stb_Password";
+            this.stb_Password.NormlBack = null;
+            this.stb_Password.Padding = new System.Windows.Forms.Padding(5);
+            this.stb_Password.ReadOnly = false;
+            this.stb_Password.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.stb_Password.Size = new System.Drawing.Size(72, 28);
+            // 
+            // 
+            // 
+            this.stb_Password.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.stb_Password.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stb_Password.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.stb_Password.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.stb_Password.SkinTxt.Name = "BaseText";
+            this.stb_Password.SkinTxt.PasswordChar = '*';
+            this.stb_Password.SkinTxt.Size = new System.Drawing.Size(62, 18);
+            this.stb_Password.SkinTxt.TabIndex = 0;
+            this.stb_Password.SkinTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.stb_Password.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.stb_Password.SkinTxt.WaterText = "";
+            this.stb_Password.TabIndex = 28;
+            this.stb_Password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.stb_Password.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.stb_Password.WaterText = "";
+            this.stb_Password.WordWrap = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(888, 535);
+            this.ClientSize = new System.Drawing.Size(877, 712);
+            this.Controls.Add(this.skinGroupBox2);
             this.Controls.Add(this.skinGroupBox1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.statusStrip1);
@@ -789,6 +963,8 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.skinGroupBox1.ResumeLayout(false);
+            this.skinGroupBox2.ResumeLayout(false);
+            this.skinGroupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -858,5 +1034,14 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private CCWin.SkinControl.SkinGroupBox skinGroupBox1;
         private CCWin.SkinControl.SkinListBox skinListBox1;
+        private CCWin.SkinControl.SkinGroupBox skinGroupBox2;
+        private CCWin.SkinControl.SkinTextBox stb_Password;
+        private CCWin.SkinControl.SkinButton skinButton4;
+        private CCWin.SkinControl.SkinButton skinButton3;
+        private CCWin.SkinControl.SkinButton skinButton2;
+        private CCWin.SkinControl.SkinButton skinButton1;
+        private CCWin.SkinControl.SkinComboBox scomboUserID;
+        private CCWin.SkinControl.SkinLabel skinLabel2;
+        private CCWin.SkinControl.SkinLabel skinLabel1;
     }
 }
