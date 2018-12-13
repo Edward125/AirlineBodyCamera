@@ -89,6 +89,8 @@
             this.txtCopyFileDestPath = new System.Windows.Forms.TextBox();
             this.chkSetCopy = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.skinGroupBox1 = new CCWin.SkinControl.SkinGroupBox();
+            this.skinListBox1 = new CCWin.SkinControl.SkinListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grbChangePassword.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -100,12 +102,13 @@
             this.statusStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.skinGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(92, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(92, 37);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(218, 57);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -123,7 +126,7 @@
             this.grbChangePassword.Controls.Add(this.txtNewPwd1);
             this.grbChangePassword.Controls.Add(this.comboIDType);
             this.grbChangePassword.Enabled = false;
-            this.grbChangePassword.Location = new System.Drawing.Point(10, 372);
+            this.grbChangePassword.Location = new System.Drawing.Point(10, 390);
             this.grbChangePassword.Name = "grbChangePassword";
             this.grbChangePassword.Size = new System.Drawing.Size(388, 65);
             this.grbChangePassword.TabIndex = 21;
@@ -207,7 +210,7 @@
             this.groupBox6.Controls.Add(this.btnEjectSD);
             this.groupBox6.Controls.Add(this.btn_SyncDevTime);
             this.groupBox6.Controls.Add(this.btn_SetMSDC);
-            this.groupBox6.Location = new System.Drawing.Point(10, 263);
+            this.groupBox6.Location = new System.Drawing.Point(10, 281);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(390, 50);
             this.groupBox6.TabIndex = 16;
@@ -271,7 +274,7 @@
             this.grbUpdateFile.Controls.Add(this.btnOpenFile);
             this.grbUpdateFile.Controls.Add(this.txtFilePath);
             this.grbUpdateFile.Controls.Add(this.label12);
-            this.grbUpdateFile.Location = new System.Drawing.Point(9, 439);
+            this.grbUpdateFile.Location = new System.Drawing.Point(9, 457);
             this.grbUpdateFile.Name = "grbUpdateFile";
             this.grbUpdateFile.Size = new System.Drawing.Size(386, 47);
             this.grbUpdateFile.TabIndex = 20;
@@ -331,7 +334,7 @@
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.txtDevID);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(12, 168);
+            this.groupBox3.Location = new System.Drawing.Point(12, 186);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(386, 91);
             this.groupBox3.TabIndex = 19;
@@ -456,7 +459,7 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.tb_Resolution);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(285, 85);
+            this.groupBox2.Location = new System.Drawing.Point(285, 103);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(115, 80);
             this.groupBox2.TabIndex = 18;
@@ -509,7 +512,7 @@
             this.groupBox1.Controls.Add(this.btnLogon);
             this.groupBox1.Controls.Add(this.tb_Password);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 85);
+            this.groupBox1.Location = new System.Drawing.Point(12, 103);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(270, 80);
             this.groupBox1.TabIndex = 17;
@@ -605,7 +608,7 @@
             // 
             this.gb_StatusCommand.BackColor = System.Drawing.Color.Transparent;
             this.gb_StatusCommand.Controls.Add(this.lstInfo);
-            this.gb_StatusCommand.Location = new System.Drawing.Point(406, 85);
+            this.gb_StatusCommand.Location = new System.Drawing.Point(1107, 103);
             this.gb_StatusCommand.Name = "gb_StatusCommand";
             this.gb_StatusCommand.Size = new System.Drawing.Size(458, 401);
             this.gb_StatusCommand.TabIndex = 22;
@@ -628,9 +631,9 @@
             this.tslblBatt,
             this.tslblResolution,
             this.tsPbar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 492);
+            this.statusStrip1.Location = new System.Drawing.Point(4, 509);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(870, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(880, 22);
             this.statusStrip1.TabIndex = 23;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -661,7 +664,7 @@
             this.groupBox4.Controls.Add(this.btnOpenFolder);
             this.groupBox4.Controls.Add(this.txtCopyFileDestPath);
             this.groupBox4.Controls.Add(this.chkSetCopy);
-            this.groupBox4.Location = new System.Drawing.Point(9, 319);
+            this.groupBox4.Location = new System.Drawing.Point(9, 337);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(389, 52);
             this.groupBox4.TabIndex = 24;
@@ -709,19 +712,48 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(316, 19);
+            this.pictureBox2.Location = new System.Drawing.Point(316, 37);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(483, 60);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 25;
             this.pictureBox2.TabStop = false;
             // 
+            // skinGroupBox1
+            // 
+            this.skinGroupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.skinGroupBox1.BorderColor = System.Drawing.Color.Red;
+            this.skinGroupBox1.Controls.Add(this.skinListBox1);
+            this.skinGroupBox1.ForeColor = System.Drawing.Color.Blue;
+            this.skinGroupBox1.Location = new System.Drawing.Point(415, 105);
+            this.skinGroupBox1.Name = "skinGroupBox1";
+            this.skinGroupBox1.RectBackColor = System.Drawing.Color.White;
+            this.skinGroupBox1.RoundStyle = CCWin.SkinClass.RoundStyle.All;
+            this.skinGroupBox1.Size = new System.Drawing.Size(458, 400);
+            this.skinGroupBox1.TabIndex = 26;
+            this.skinGroupBox1.TabStop = false;
+            this.skinGroupBox1.Text = "状态信息";
+            this.skinGroupBox1.TitleBorderColor = System.Drawing.Color.Red;
+            this.skinGroupBox1.TitleRectBackColor = System.Drawing.Color.White;
+            this.skinGroupBox1.TitleRoundStyle = CCWin.SkinClass.RoundStyle.All;
+            // 
+            // skinListBox1
+            // 
+            this.skinListBox1.Back = null;
+            this.skinListBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.skinListBox1.FormattingEnabled = true;
+            this.skinListBox1.Location = new System.Drawing.Point(6, 19);
+            this.skinListBox1.Name = "skinListBox1";
+            this.skinListBox1.Size = new System.Drawing.Size(446, 368);
+            this.skinListBox1.TabIndex = 0;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(870, 514);
+            this.ClientSize = new System.Drawing.Size(888, 535);
+            this.Controls.Add(this.skinGroupBox1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.gb_StatusCommand);
@@ -735,7 +767,6 @@
             this.Controls.Add(this.pictureBox2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMain";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
@@ -757,6 +788,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.skinGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -824,5 +856,7 @@
         private System.Windows.Forms.Button btnCopyFile;
         private System.Windows.Forms.ToolStripProgressBar tsPbar;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private CCWin.SkinControl.SkinGroupBox skinGroupBox1;
+        private CCWin.SkinControl.SkinListBox skinListBox1;
     }
 }

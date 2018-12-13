@@ -10,10 +10,13 @@ using SDK;
 using System.IO;
 using System.Threading;
 using Edward;
+using CCWin;
+using CCWin.Win32;
+using CCWin.SkinControl;
 
 namespace AirlineBodyCamera
 {
-    public partial class frmMain : Form
+    public partial class frmMain : Skin_Mac 
     {
         public frmMain()
         {
@@ -176,9 +179,9 @@ namespace AirlineBodyCamera
             }
             FormerOpen.Close();//释放所有资源
             ToFileOpen.Close();//释放所有资源
-            updateMessage(lstInfo, "升级文件拷贝完成.");
+            updateMessage(skinListBox1, "升级文件拷贝完成.");
            // p.WriteLog("升级文件拷贝完成.");
-            updateMessage(lstInfo , "请拔掉USB数据线，静待系统自动升级.");
+            updateMessage(skinListBox1 , "请拔掉USB数据线，静待系统自动升级.");
           //  p.WriteLog("请拔掉USB数据线，静待系统自动升级.");
             progressBar1.Value = 0;
             btnOpenFile.Enabled = true;
@@ -251,9 +254,9 @@ namespace AirlineBodyCamera
             }
             FormerOpen.Close();//释放所有资源
             ToFileOpen.Close();//释放所有资源
-            updateMessage(lstInfo, "升级文件拷贝完成.");
+            updateMessage(skinListBox1, "升级文件拷贝完成.");
             // p.WriteLog("升级文件拷贝完成.");
-            updateMessage(lstInfo, "请拔掉USB数据线，静待系统自动升级.");
+            updateMessage(skinListBox1, "请拔掉USB数据线，静待系统自动升级.");
             //  p.WriteLog("请拔掉USB数据线，静待系统自动升级.");
           //  progressBar1.Value = 0;
             tsPbar.Value = 0;
@@ -280,7 +283,7 @@ namespace AirlineBodyCamera
             //progressBar1.Value = 0;//设置进度栏的当前位置为0
             //progressBar1.Minimum = 0;//设置进度栏的最小值为0
             FileInfo fi = new FileInfo(FormerFile);
-            updateMessage(lstInfo, "正在复制:" + fi.Name);
+            updateMessage(skinListBox1, "正在复制:" + fi.Name);
             tsPbar.Visible = true;
             tsPbar.Value = 0;
             tsPbar.Minimum = 0;
@@ -380,7 +383,7 @@ namespace AirlineBodyCamera
                                 {
                                     if (drive.DriveType == DriveType.Removable)
                                     {
-                                        updateMessage(lstInfo, "U盘已插入，盘符为:" + drive.Name.ToString());
+                                        updateMessage(skinListBox1, "U盘已插入，盘符为:" + drive.Name.ToString());
                                         /// Thread.Sleep(1000);
                                         DestinFolder = drive.Name.ToString();
                                         btnCopyFile.Enabled = true;
@@ -407,7 +410,7 @@ namespace AirlineBodyCamera
                         case DBT_DEVICEREMOVECOMPLETE: //U盘卸载
                             if (bCheckDevice)
                             {
-                                updateMessage(lstInfo, "U盘已卸载！");
+                                updateMessage(skinListBox1, "U盘已卸载！");
                             }
                             break;
                         case DBT_DEVICEREMOVEPENDING:
@@ -427,7 +430,7 @@ namespace AirlineBodyCamera
             }
             catch (Exception ex)
             {
-                updateMessage(lstInfo, "Error:" + ex.Message);
+                updateMessage(skinListBox1, "Error:" + ex.Message);
 
             }
             base.WndProc(ref m);
@@ -455,6 +458,31 @@ namespace AirlineBodyCamera
                 listbox.SetSelected(listbox.Items.Count - 1, true);
             }
         }
+
+
+        /// <summary>
+        /// 更新信息到listbox中
+        /// </summary>
+        /// <param name="listbox">listbox name</param>
+        /// <param name="message">message</param>
+        public static void updateMessage(SkinListBox listbox,  string message)
+        {
+            if (listbox.Items.Count > 1000)
+                listbox.Items.RemoveAt(0);
+
+            //string item = string.Empty;
+            //listbox.Items.Add("");
+            SkinListBoxItem item = new SkinListBoxItem();
+            item.Text  = DateTime.Now.ToString("HH:mm:ss") + " " + @message;
+            listbox.Items.Add(item);
+            if (listbox.Items.Count > 1)
+            {
+                listbox.TopIndex = listbox.Items.Count - 1;
+                listbox.SetSelected(listbox.Items.Count - 1, true);
+            }
+        }
+
+
         #endregion
 
 
@@ -466,10 +494,10 @@ namespace AirlineBodyCamera
             //不能使用最大化窗口： 
             this.MaximizeBox = false;
 
-            this.Location = new Point(
-            (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
-            (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2
-             );
+            //this.Location = new Point(
+            //(System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
+            //(System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2
+            // );
 
             //不能使用最小化窗口： 
             this.MinimizeBox = false;
@@ -506,7 +534,7 @@ namespace AirlineBodyCamera
                  if (Init_Device_iRet == 1)
                  {
                      LoginDevice = DeviceType.Cammpro;
-                     updateMessage(lstInfo, "检测设备成功.");
+                     updateMessage(skinListBox1, "检测设备成功.");
                      this.btnLogon.Enabled = true;
                      this.btnCheckDev.Enabled = false;
                      this.tb_Password.Enabled = true;
@@ -517,7 +545,7 @@ namespace AirlineBodyCamera
                  }
                 else 
                  {
-                     updateMessage(lstInfo, "未发现可登陆的设备,请重新连接设备重试.");
+                     updateMessage(skinListBox1, "未发现可登陆的设备,请重新连接设备重试.");
                  }
 
 
@@ -546,7 +574,7 @@ namespace AirlineBodyCamera
             DevicePassword = tb_Password.Text;
             if (string.IsNullOrEmpty(DevicePassword))
             {
-                updateMessage(lstInfo, "密码不能为空,请重新输入.");
+                updateMessage(skinListBox1, "密码不能为空,请重新输入.");
                 tb_Password.Focus();
                 return;
             }
@@ -571,7 +599,7 @@ namespace AirlineBodyCamera
 
             if (Battery_iRet != 1)
             {
-                updateMessage(lstInfo, "密码错误,登录失败.");
+                updateMessage(skinListBox1, "密码错误,登录失败.");
                 tb_Password.SelectAll();
                 tb_Password.Focus();
                 return;
@@ -584,16 +612,16 @@ namespace AirlineBodyCamera
 
             //同步时间
             if (SyncDeviceTime(LoginDevice, DevicePassword))
-                updateMessage(lstInfo, "自动同步设备时间成功.（" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ")");
+                updateMessage(skinListBox1, "自动同步设备时间成功.（" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ")");
             else
-                updateMessage(lstInfo, "自动设备时间失败.");
+                updateMessage(skinListBox1, "自动设备时间失败.");
 
 
             //////////////////////////////////////////////////////////////////////////////
             //执法仪电量
             this.tb_Battery.Text = BatteryLevel.ToString() + " %";
             tslblBatt.Text = "电量:" + BatteryLevel.ToString() + " %";
-            updateMessage(lstInfo, "获取电量值成功(" + BatteryLevel.ToString() + " %).");
+            updateMessage(skinListBox1, "获取电量值成功(" + BatteryLevel.ToString() + " %).");
             /////////////////////////////////////////////////////////////////////////////
             //获取执法记录仪分辨率
             DeviceResolution DR = new DeviceResolution();
@@ -601,17 +629,17 @@ namespace AirlineBodyCamera
             {
                 this.tb_Resolution.Text = DR.Resolution_Width.ToString() + "*" + DR.Resolution_Height.ToString();
                 tslblResolution.Text ="分辨率:" + DR.Resolution_Width.ToString() + "*" + DR.Resolution_Height.ToString();
-                updateMessage(lstInfo, "获取视频分辨率参数成功(" + DR.Resolution_Width.ToString() + "*" + DR.Resolution_Height.ToString() + ").");
+                updateMessage(skinListBox1, "获取视频分辨率参数成功(" + DR.Resolution_Width.ToString() + "*" + DR.Resolution_Height.ToString() + ").");
 
                 if (LoginDevice == DeviceType.EasyStorage)
-                    updateMessage(lstInfo, "获取视频码流帧数参数成功(Bps=" + DR.Bps + "bit/s,Fps=" + DR.Fps + "帧/s).");
+                    updateMessage(skinListBox1, "获取视频码流帧数参数成功(Bps=" + DR.Bps + "bit/s,Fps=" + DR.Fps + "帧/s).");
             }
             ///////////////////////////////////////////////////////////////////////////
             //执法仪信息读取返回值
             DeviceInfo DI = new DeviceInfo();
             if (GetDeviceInfo(LoginDevice, DevicePassword, out DI))
             {
-                updateMessage(lstInfo, "获取执法仪本机信息成功.");
+                updateMessage(skinListBox1, "获取执法仪本机信息成功.");
                 this.txtDevID.Text = DI.cSerial; //System.Text.Encoding.Default.GetString(uuDevice.cSerial);
                 this.txtUserID.Text = DI.userNo; ///System.Text.Encoding.Default.GetString(uuDevice.userNo);
                 this.txtUserName.Text = DI.userName; // System.Text.Encoding.Default.GetString(uuDevice.userName);
@@ -777,7 +805,7 @@ namespace AirlineBodyCamera
             DeviceInfo DI = new DeviceInfo();
             if (GetDeviceInfo(LoginDevice, DevicePassword, out DI))
             {
-                updateMessage(lstInfo, "获取执法仪本机信息成功.");
+                updateMessage(skinListBox1, "获取执法仪本机信息成功.");
                 DI.cSerial = DI.cSerial.TrimEnd('\0');
                 this.txtDevID.Text = DI.cSerial; //System.Text.Encoding.Default.GetString(uuDevice.cSerial);
                 this.txtUserID.Text = DI.userNo; ///System.Text.Encoding.Default.GetString(uuDevice.userNo);
@@ -812,9 +840,9 @@ namespace AirlineBodyCamera
         {
             //同步时间
             if (SyncDeviceTime(LoginDevice, DevicePassword))
-                updateMessage(lstInfo, "手动同步设备时间成功.（" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ")");
+                updateMessage(skinListBox1, "手动同步设备时间成功.（" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ")");
             else
-                updateMessage(lstInfo, "手动设备时间失败.");
+                updateMessage(skinListBox1, "手动设备时间失败.");
         }
 
 
@@ -865,7 +893,7 @@ namespace AirlineBodyCamera
                 this.btnUpdataFile.Enabled = true;
                 txtFilePath.Enabled = true;
 
-                updateMessage(lstInfo, "执法仪已进入U盘模式.");
+                updateMessage(skinListBox1, "执法仪已进入U盘模式.");
 
             }
         }
@@ -899,7 +927,7 @@ namespace AirlineBodyCamera
 
                 if (WriteDeviceInfo(LoginDevice, DevicePassword, di))
                 {
-                    updateMessage(lstInfo, "向执法仪写入信息成功.");
+                    updateMessage(skinListBox1, "向执法仪写入信息成功.");
                     tslblSN.Text = "当前设备编号:" + di.cSerial;
                     //  btnEdit.Text = "编辑";
                 }
@@ -967,7 +995,7 @@ namespace AirlineBodyCamera
             }
             else 
             {
-                updateMessage(lstInfo, "升级文件不存在,请重新确认.");
+                updateMessage(skinListBox1, "升级文件不存在,请重新确认.");
             }
 
 
@@ -979,19 +1007,19 @@ namespace AirlineBodyCamera
         {
             if (comboIDType.SelectedIndex == -1)
             {
-                updateMessage(lstInfo, "请要修改密码的账号.");
+                updateMessage(skinListBox1, "请要修改密码的账号.");
                 comboIDType.Focus();
                 return;
             }
             if (string.IsNullOrEmpty(txtNewPwd1.Text.Trim()))
             {
-                updateMessage(lstInfo, "密码不能为空,请重新输入.");
+                updateMessage(skinListBox1, "密码不能为空,请重新输入.");
                 txtNewPwd1.Focus();
                 return;
             }
             if (txtNewPwd1.Text.Trim() != txtNewPwd2.Text.Trim())
             {
-                updateMessage(lstInfo, "两次输入的新密码不一致,请重新输入");
+                updateMessage(skinListBox1, "两次输入的新密码不一致,请重新输入");
                 txtNewPwd1.SelectAll();
                 txtNewPwd1.Focus();
                 return;
@@ -1004,7 +1032,7 @@ namespace AirlineBodyCamera
             {
                 if (SetPwd(LoginDevice, comboIDType, DevicePassword, txtNewPwd1.Text.Trim()))
                 {
-                    updateMessage(lstInfo, "修改" + comboIDType.Text + "的密码成功");
+                    updateMessage(skinListBox1, "修改" + comboIDType.Text + "的密码成功");
                     txtNewPwd1.Text = string.Empty;
                     txtNewPwd2.Text = string.Empty;
                     grbChangePassword.Enabled = false;
@@ -1069,7 +1097,7 @@ namespace AirlineBodyCamera
             if (!bCopyFile)
             {
                 if (LoginDevice == DeviceType.EasyStorage)
-                    updateMessage(lstInfo, "退出登录成功");
+                    updateMessage(skinListBox1, "退出登录成功");
                 bCheckDevice = false;
                 InitUI();
                 bCheckDevice = false;
@@ -1171,7 +1199,7 @@ namespace AirlineBodyCamera
             }
             else
             {
-                updateMessage(lstInfo, "打开磁盘无效.");
+                updateMessage(skinListBox1, "打开磁盘无效.");
             }
         }
 
@@ -1236,13 +1264,13 @@ namespace AirlineBodyCamera
                 }
                 btnCopyFile.Enabled = true;
                 btnUpdataFile.Enabled = true;
-                updateMessage(lstInfo, "复制执勤仪文件完毕.");
+                updateMessage(skinListBox1, "复制执勤仪文件完毕.");
             }
             else
             {
                 if (Directory.Exists(txtCopyFileDestPath.Text.Trim()))
                 {
-                    updateMessage(lstInfo, "存储执勤仪文件的文件夹不存在,请重新选择.");
+                    updateMessage(skinListBox1, "存储执勤仪文件的文件夹不存在,请重新选择.");
                     txtCopyFileDestPath.Focus();
                     txtCopyFileDestPath.Focus();
                 }
