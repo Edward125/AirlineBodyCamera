@@ -40,7 +40,7 @@
             this.comboIDType = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnCopyFile = new System.Windows.Forms.Button();
-            this.btn_ChangePWd = new System.Windows.Forms.Button();
+            this.sbtnChangePWd = new System.Windows.Forms.Button();
             this.btnEjectSD = new System.Windows.Forms.Button();
             this.btn_SyncDevTime = new System.Windows.Forms.Button();
             this.btn_SetMSDC = new System.Windows.Forms.Button();
@@ -203,7 +203,7 @@
             // 
             this.groupBox6.BackColor = System.Drawing.Color.Transparent;
             this.groupBox6.Controls.Add(this.btnCopyFile);
-            this.groupBox6.Controls.Add(this.btn_ChangePWd);
+            this.groupBox6.Controls.Add(this.sbtnChangePWd);
             this.groupBox6.Controls.Add(this.btnEjectSD);
             this.groupBox6.Controls.Add(this.btn_SyncDevTime);
             this.groupBox6.Controls.Add(this.btn_SetMSDC);
@@ -223,16 +223,16 @@
             this.btnCopyFile.UseVisualStyleBackColor = true;
             this.btnCopyFile.Click += new System.EventHandler(this.btnCopyFile_Click);
             // 
-            // btn_ChangePWd
+            // sbtnChangePWd
             // 
-            this.btn_ChangePWd.Enabled = false;
-            this.btn_ChangePWd.Location = new System.Drawing.Point(320, 13);
-            this.btn_ChangePWd.Name = "btn_ChangePWd";
-            this.btn_ChangePWd.Size = new System.Drawing.Size(61, 30);
-            this.btn_ChangePWd.TabIndex = 16;
-            this.btn_ChangePWd.Text = "修改密码";
-            this.btn_ChangePWd.UseVisualStyleBackColor = true;
-            this.btn_ChangePWd.Click += new System.EventHandler(this.btn_ChangePWd_Click);
+            this.sbtnChangePWd.Enabled = false;
+            this.sbtnChangePWd.Location = new System.Drawing.Point(320, 13);
+            this.sbtnChangePWd.Name = "sbtnChangePWd";
+            this.sbtnChangePWd.Size = new System.Drawing.Size(61, 30);
+            this.sbtnChangePWd.TabIndex = 16;
+            this.sbtnChangePWd.Text = "修改密码";
+            this.sbtnChangePWd.UseVisualStyleBackColor = true;
+            this.sbtnChangePWd.Click += new System.EventHandler(this.btn_ChangePWd_Click);
             // 
             // btnEjectSD
             // 
@@ -774,7 +774,7 @@
         private System.Windows.Forms.TextBox txtNewPwd1;
         private System.Windows.Forms.ComboBox comboIDType;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Button btn_ChangePWd;
+        private System.Windows.Forms.Button sbtnChangePWd;
         private System.Windows.Forms.Button btnEjectSD;
         private System.Windows.Forms.Button btn_SyncDevTime;
         private System.Windows.Forms.Button btn_SetMSDC;

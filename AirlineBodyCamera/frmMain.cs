@@ -49,15 +49,6 @@ namespace AirlineBodyCamera
         public const int DBT_QUERYCHANGECONFIG = 0x0017;
         public const int DBT_USERDEFINED = 0xFFFF;
 
-
-
-        //int totalSize; //Total Size 
-        //int position; //Position 
-        //const int BUFFER_SIZE = 4096;
-        //byte[] buffer;
-        //Stream stream;
-       // string copyDestFile = string.Empty;
-
         /// <summary>
         /// 登陆的设备类型
         /// </summary>
@@ -91,12 +82,6 @@ namespace AirlineBodyCamera
             public string unitName { get; set; }
 
         }
-
-
-
-
-
-
 
         #endregion
 
@@ -667,7 +652,7 @@ namespace AirlineBodyCamera
 
             grbChangePassword.Enabled = false;
             comboUserID.Enabled = false;
-            btn_ChangePWd.Enabled = true;
+            sbtnChangePWd.Enabled = true;
 
 
             //btn_FilePathChose.Enabled = true;
@@ -693,8 +678,6 @@ namespace AirlineBodyCamera
             }
             return false;
         }
-
-
 
         /// <summary>
         /// 获取登陆设备的分辨率
@@ -855,7 +838,7 @@ namespace AirlineBodyCamera
             if (SetDeviceMSDC(LoginDevice, DevicePassword))
             {
                 this.btnEdit.Enabled = false;
-                btn_ChangePWd.Enabled = false;
+                sbtnChangePWd.Enabled = false;
                 btnReadDeviceInfo.Enabled = false;
                 this.btn_SyncDevTime.Enabled = false;
                 this.btn_SetMSDC.Enabled = false;
@@ -1008,8 +991,8 @@ namespace AirlineBodyCamera
                     txtNewPwd1.Text = string.Empty;
                     txtNewPwd2.Text = string.Empty;
                     grbChangePassword.Enabled = false;
-                    btn_ChangePWd.Enabled = true;
-                    btn_ChangePWd.Text = "修改密码";
+                    sbtnChangePWd.Enabled = true;
+                    sbtnChangePWd.Text = "修改密码";
                 }
             }
         }
@@ -1046,13 +1029,13 @@ namespace AirlineBodyCamera
 
         private void btn_ChangePWd_Click(object sender, EventArgs e)
         {
-            if (btn_ChangePWd.Text == "修改密码")
+            if (sbtnChangePWd.Text == "修改密码")
             {
 
                 grbChangePassword.Enabled = true;
                 comboIDType.SelectedIndex = 0;
                 //btn_ChangePWd.Enabled = false;
-                btn_ChangePWd.Text = "放弃修改";
+                sbtnChangePWd.Text = "放弃修改";
             }
             else
             {
@@ -1060,7 +1043,7 @@ namespace AirlineBodyCamera
                 grbChangePassword.Enabled = false;
                 //btn_ChangePWd.Enabled = 
                 comboIDType.SelectedIndex = -1;
-                btn_ChangePWd.Text = "修改密码";
+                sbtnChangePWd.Text = "修改密码";
             }
         }
 
@@ -1107,7 +1090,7 @@ namespace AirlineBodyCamera
 
             this.btnUpdataFile.Enabled = false;
             txtFilePath.Text = string.Empty;
-            btn_ChangePWd.Enabled = false;
+            sbtnChangePWd.Enabled = false;
             LoginDevice = DeviceType.NA;
             txtFilePath.Enabled = false;
             btnCopyFile.Enabled = false;
