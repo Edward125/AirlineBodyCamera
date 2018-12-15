@@ -75,7 +75,7 @@ namespace AirlineBodyCamera
                 System.Threading.Thread.Sleep(1000);
                 // close the splash screen
                 SplashForm.CloseSplash();
-                Application.Run(new frmMain());
+                Application.Run(new frmsMain());
                // HandleRunningInstance(instance);
             }
             else
